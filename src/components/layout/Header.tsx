@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles/Header.scss';
 
 const Header = () => {
   return (
     <header className="header">
       <Link className="header-title" to="/">
-        Trueface
+        Fantasy
       </Link>
 
       <nav className="header-nav">
@@ -15,7 +14,13 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="header-nav-item">
-            <Link to="/">Profile</Link>
+            <Link to="/">My Team</Link>
+          </li>
+          <li className="header-nav-item">
+            <Link to="/">Matchup</Link>
+          </li>
+          <li className="header-nav-item">
+            <Link to="/">Players</Link>
           </li>
         </ul>
       </nav>

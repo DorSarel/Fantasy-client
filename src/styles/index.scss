@@ -1,0 +1,8 @@
+@import './basics/root';
+@import './basics/reset';
+
+@import './setup/layout';
+
+
+// Components
+@import '../components/layout/styles/Header.scss'
