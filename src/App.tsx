@@ -7,7 +7,15 @@ const App = () => {
     <div className="container">
       <Router>
         <Header />
-        <div style={{ fontSize: '5rem' }}>Main will go here</div>
+        <div className="left" style={{ background: '#ccc' }}>
+          This is the left column
+        </div>
+        <div className="middle" style={{ background: 'red' }}>
+          This is the middle column
+        </div>
+        <div className="right" style={{ background: 'yellow' }}>
+          This is the right column
+        </div>
       </Router>
     </div>
   );
