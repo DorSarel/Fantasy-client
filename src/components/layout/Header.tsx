@@ -20,7 +20,7 @@ const Header = () => {
             <Link to="/">Matchup</Link>
           </li>
           <li className="header-nav-item">
-            <Link to="/">Players</Link>
+            <Link to="/players">Players</Link>
           </li>
         </ul>
       </nav>

@@ -1,8 +1,21 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: minmax(35rem, 1fr) 2fr minmax(35rem, 1fr);
+    background-color: var(--primary-color);
 }
 
 .header {
     grid-column: 1 / -1;
+}
+
+.left-column {
+    grid-column: 1 / 2;
+}
+
+.middle-column {
+    grid-column: 2 / 3;
+}
+
+.right-column {
+    grid-column: 3 / -1;
 }

@@ -2,7 +2,9 @@
 @import './basics/reset';
 
 @import './setup/layout';
+@import './setup/mixins';
 
 
 // Components
-@import '../components/layout/styles/Header.scss'
+@import '../components/layout/styles/Header.scss';
+@import '../components/pages/styles/PlayersPage.scss';

@@ -1,0 +1,59 @@
+.players-filters {
+  @include column-layout-basic;
+  font-size: 1.5rem;
+}
+
+.players-positions {
+  font-size: 1em;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 0.5em;
+    }
+  }
+
+  .position-label {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(139, 139, 139, 0.3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0;
+    padding: 0.15em 1em;
+    cursor: pointer;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 250ms ease-in-out;
+  }
+
+  .position-checkbox {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .position-checkbox:checked + .position-label {
+    border: 2px solid var(--color-white);
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+}
+
+.players-main {
+  grid-column: 2 / -1;
+  background-color: var(--color-white);
+  padding: 2rem;
+}
