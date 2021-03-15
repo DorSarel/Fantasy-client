@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SelectInput from '../common/SelectInput';
 import ToggleCheckbox from '../common/ToggleCheckbox';
 import PlayersPositionsFilter from '../PlayersPage/PlayersPositionsFilter';
 
@@ -25,6 +26,8 @@ const PlayersPage = () => {
         <h1>Filters</h1>
         <ToggleCheckbox label="Show rostered players" isChecked={isRosteredVisible} onChange={handleRosteredPlayers} />
         <PlayersPositionsFilter onChange={handlePositionCheck} />
+        <SelectInput label="Teams" />
+        <SelectInput label="Games Count" />
       </div>
       <div className="players-main">This is the players table</div>
     </>

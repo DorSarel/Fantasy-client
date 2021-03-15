@@ -1,7 +1,10 @@
 :root {
     --color-nav: #01579B;
     --primary-color: #C4C4C4;
-
     --color-black: #000;
     --color-white: #fff;
+
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
 }
