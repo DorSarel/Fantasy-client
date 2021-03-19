@@ -1,4 +1,9 @@
-export interface IPlayer {
+export interface IPlayerStore {
+  players: IPlayerResponse[];
+  error: null | string;
+}
+
+export interface IPlayerResponse {
   firstName: string;
   lastName: string;
   teamId?: number;
@@ -11,4 +16,9 @@ export interface IPlayer {
       pos: string;
     };
   };
+}
+
+export interface IPlayer extends IPlayerResponse {
+  weeklyGames: number;
+  teamName: string;
 }
