@@ -1,18 +1,40 @@
 .players-filters {
-  @include column-layout-basic;
-  font-size: 1.5rem;
+  @include use-basic-page-setup;
 
-  & > * {
-    margin-bottom: 1em;
+  &-title {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8rem;
+
+    h1 {
+      margin-inline-end: 1rem;
+    }
+
+    span {
+      font-size: 1.15rem;
+      color: #777;
+    }
   }
 
-  h1 {
-    margin-bottom: 0;
+  &-select {
+    display: flex;
+    gap: 1rem;
+
+    & > * {
+      flex: 1;
+    }
   }
 }
 
 .players-positions {
-  font-size: 1em;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+
+  &-title {
+    font-size: 1.45rem;
+    margin-inline-end: 1.15rem;
+  }
 
   ul {
     list-style: none;
@@ -30,13 +52,13 @@
 
   .position-label {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 2px solid rgba(139, 139, 139, 0.3);
-    color: #adadad;
+    background-color: #005687;
+    color: var(--color-white);
+    font-weight: 700;
     border-radius: 25px;
     white-space: nowrap;
     margin: 3px 0;
-    padding: 0.15em 1em;
+    padding: 0.25rem 1.15rem;
     cursor: pointer;
 
     -webkit-touch-callout: none;
@@ -54,13 +76,10 @@
   }
 
   .position-checkbox:checked + .position-label {
-    border: 2px solid var(--color-white);
-    background-color: var(--color-black);
-    color: var(--color-white);
+    background-color: var(--color-nav);
   }
 }
 
 .players-main {
-  background-color: var(--color-white);
-  padding: 2rem;
+  @include use-basic-page-setup;
 }

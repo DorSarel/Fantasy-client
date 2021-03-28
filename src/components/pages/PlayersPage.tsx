@@ -5,6 +5,7 @@ import ToggleCheckbox from '../common/ToggleCheckbox';
 import PlayersPositionsFilter from '../PlayersPage/PlayersPositionsFilter';
 import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
+import PlayersTable from '../common/PlayersTable';
 
 const players: IPlayer[] = [
   {
@@ -58,19 +59,12 @@ const players: IPlayer[] = [
 ];
 
 const PlayersPage = () => {
-  const [isRosteredVisible, setRosteredVisible] = useState(false);
   const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
   const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(PlayerActions.fetchPlayers());
   // }, []);
-
-  const handleRosteredPlayers = (e: React.SyntheticEvent) => {
-    const { checked } = e.target as HTMLInputElement;
-    if (checked) setRosteredVisible(true);
-    else setRosteredVisible(false);
-  };
 
   const handlePositionCheck = ({ checked, values }: { checked: boolean; values: string[] }) => {
     if (checked) setPositionsFilters((currentFilters) => [...currentFilters, ...values]);
@@ -81,14 +75,22 @@ const PlayersPage = () => {
 
   return (
     <>
-      <div className="players-filters left-column">
-        <h1>Filters</h1>
-        <ToggleCheckbox label="Show rostered players" isChecked={isRosteredVisible} onChange={handleRosteredPlayers} />
+      <div className="players-filters middle-column">
+        <div className="players-filters-title">
+          <h1>Players Board</h1>
+          <span>League name...</span>
+        </div>
         <PlayersPositionsFilter onChange={handlePositionCheck} selectedPositions={positionsFilters} />
-        <SelectInput label="Teams" />
-        <SelectInput label="Weekly Games" />
+        <div className="players-filters-select">
+          <SelectInput label="Teams" />
+          <SelectInput label="Weekly Games" />
+          <SelectInput label="Available" />
+          <SelectInput label="Healthy" />
+        </div>
       </div>
-      <div className="players-main fill-2-columns">This is the players table</div>
+      <div className="players-main middle-column">
+        <PlayersTable players={players} />
+      </div>
     </>
   );
 };

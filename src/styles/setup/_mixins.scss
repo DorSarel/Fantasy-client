@@ -1,4 +1,12 @@
 @mixin column-layout-basic {
-    min-height: calc(100vh - 44px);
-    padding: 2rem;
-  }
+  min-height: calc(100vh - 44px);
+  padding: 2rem;
+}
+
+@mixin use-basic-page-setup {
+  font-size: 1.5rem;
+  background-color: var(--color-white);
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+}

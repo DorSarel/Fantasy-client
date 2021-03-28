@@ -5,7 +5,7 @@ import PlayersPage from './components/pages/PlayersPage';
 
 const App = () => {
   return (
-    <div className="container">
+    <div className="main-grid">
       <Router>
         <Header />
         <Route path="/players" exact component={PlayersPage} />
