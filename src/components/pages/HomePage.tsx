@@ -5,7 +5,7 @@ import instagram from "../../assets/images/instagram-icon.png"
 import youtube from "../../assets/images/youtube-icon.png"
 import GlobalList from "../common/ListView";
 import MediaBox from "../common/MediaBox";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GlobalPaths } from '../common/GlobalPath';
 
 
