@@ -1,8 +1,6 @@
 import React from 'react';
 
-
-
-const GlobalList = () => {
+const ListViewComponent = () => {
  
     return (
         <div className="global-list">
@@ -16,4 +14,4 @@ const GlobalList = () => {
     );
 };
 
-export default GlobalList;
+export default ListViewComponent;
