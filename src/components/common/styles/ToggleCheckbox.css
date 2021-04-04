@@ -1,0 +1,53 @@
+.toggle-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toggle-wrapper > *:not(:last-child) {
+  margin-right: 1.5em;
+}
+
+.toggle-wrapper .toggle-checkbox {
+  font-size: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 2.25em;
+  height: 0.75em;
+  background: #ddd;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-wrapper .toggle-checkbox:checked {
+  background-color: #009518;
+}
+
+.toggle-wrapper .toggle-checkbox::after {
+  position: absolute;
+  content: '';
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+  left: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-wrapper .toggle-checkbox:checked::after {
+  left: calc(100% - 0.75em);
+}
+/*# sourceMappingURL=ToggleCheckbox.css.map */

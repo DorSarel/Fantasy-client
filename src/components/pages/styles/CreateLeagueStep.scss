@@ -1,0 +1,40 @@
+.create-league-step{
+
+.div1{
+    
+ input{
+    width: 40rem;
+    height: 4rem;
+    border-width: 0.2rem;
+    border-radius: 1rem;
+    font-size: x-large;
+}
+span{
+    font-size: large;
+    position: relative;
+    margin-right: 28rem;
+        color:var(--color-nav); 
+}
+}
+
+.MuiFormControlLabel-root {
+    display: inline-block;
+}
+
+
+.div2, .div3 {
+    margin-top: 3rem;
+
+    .MuiSvgIcon-root{
+        float: left;
+        width: 3rem;
+        
+    }
+    .MuiFormGroup-root {
+        display: inline;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+}
+
+}
