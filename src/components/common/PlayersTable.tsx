@@ -1,5 +1,6 @@
 import React from 'react';
 import { IPlayer } from '../../models/Player/PlayerModels';
+import PlayerInfo from './PlayerData';
 
 interface Props {
   players: IPlayer[];
@@ -29,6 +30,15 @@ const PlayersTable: React.FC<Props> = ({ players }) => {
           {
             key: 'FGP',
           },
+          {
+            key: 'FGP',
+          },
+          {
+            key: 'FGP',
+          },
+          {
+            key: 'FGP',
+          },
         ],
       },
       {
@@ -41,7 +51,7 @@ const PlayersTable: React.FC<Props> = ({ players }) => {
     () =>
       players.map((player) => {
         return {
-          player: player.firstName,
+          player: player,
           avg: 30,
           weeklyGames: player.weeklyGames,
           stats: '',
@@ -66,17 +76,20 @@ const PlayersTable: React.FC<Props> = ({ players }) => {
             {headers.map((header) => {
               if (!header.subHeaders) return null;
 
-              return header.subHeaders.map((subHeader) => <th>{subHeader.key}</th>);
+              return header.subHeaders.map((subHeader) => <th className="table-sub-header">{subHeader.key}</th>);
             })}
           </tr>
         </thead>
         <tbody>
           {data.map((playerData) => (
             <tr className="table-body-row" key={playerData.id}>
-              <td>{playerData.player}</td>
-              <td>{playerData.avg}</td>
-              <td>{playerData.weeklyGames}</td>
+              <PlayerInfo playerData={playerData.player} />
+              <td style={{ width: '5rem' }}>{playerData.avg}</td>
+              <td style={{ width: '10rem' }}>{playerData.weeklyGames}</td>
               <td>{playerData.stats}</td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td></td>
               <td></td>
               <td>{playerData.total}</td>
