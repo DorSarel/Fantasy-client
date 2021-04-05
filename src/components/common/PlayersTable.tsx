@@ -1,75 +1,90 @@
 import React from 'react';
 import { IPlayer } from '../../models/Player/PlayerModels';
-import { useTable } from 'react-table';
 
 interface Props {
   players: IPlayer[];
 }
 
 const PlayersTable: React.FC<Props> = ({ players }) => {
-  const data = React.useMemo(() => {
-    return players.map((h) => {
-      return {
-        player: h.firstName + ' ' + h.lastName,
-        avg: 34.8,
-        weeklyGames: h.weeklyGames,
-        stats: '',
-        total: 40,
-      };
-    });
-  }, [players]);
-
-  const columns = React.useMemo(
+  const headers = React.useMemo(
     () => [
       {
-        Header: 'Player',
+        key: 'Player',
       },
       {
-        Header: 'Avg',
+        key: 'Avg',
       },
       {
-        Header: 'Weekly Games',
+        key: 'Weekly Games',
       },
       {
-        Header: 'Stats',
+        key: 'Stats',
+        subHeaders: [
+          {
+            key: 'PPG',
+          },
+          {
+            key: 'RPG',
+          },
+          {
+            key: 'FGP',
+          },
+        ],
       },
       {
-        Header: 'Total',
+        key: 'Total',
       },
     ],
     []
   );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
-
-  console.log(rows);
+  const data = React.useMemo(
+    () =>
+      players.map((player) => {
+        return {
+          player: player.firstName,
+          avg: 30,
+          weeklyGames: player.weeklyGames,
+          stats: '',
+          total: 52.5,
+          id: player.playerId,
+        };
+      }),
+    [players]
+  );
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => {
-          return (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((header) => (
-                <th {...header.getHeaderProps()}>{header.render('Header')}</th>
-              ))}
+    <div className="table-container">
+      <table>
+        <thead>
+          <tr>
+            {headers.map((header) => {
+              if (!header.subHeaders) return <th rowSpan={2}>{header.key}</th>;
+
+              return <th colSpan={header.subHeaders.length}>{header.key}</th>;
+            })}
+          </tr>
+          <tr>
+            {headers.map((header) => {
+              if (!header.subHeaders) return null;
+
+              return header.subHeaders.map((subHeader) => <th>{subHeader.key}</th>);
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((playerData) => (
+            <tr className="table-body-row" key={playerData.id}>
+              <td>{playerData.player}</td>
+              <td>{playerData.avg}</td>
+              <td>{playerData.weeklyGames}</td>
+              <td>{playerData.stats}</td>
+              <td></td>
+              <td></td>
+              <td>{playerData.total}</td>
             </tr>
-          );
-        })}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          console.log(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

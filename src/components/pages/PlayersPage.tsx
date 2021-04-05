@@ -56,6 +56,182 @@ const players: IPlayer[] = [
       },
     },
   },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
+  {
+    firstName: 'Dor',
+    lastName: 'Sarel',
+    playerId: 1,
+    teamName: 'Portland',
+    weeklyGames: 5,
+    teamId: 23,
+    heightInMeters: 1.72,
+    leagues: {
+      standard: {
+        active: 'true',
+        pos: 'C',
+        jersey: 9,
+      },
+    },
+  },
 ];
 
 const PlayersPage = () => {
