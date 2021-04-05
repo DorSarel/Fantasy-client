@@ -31,13 +31,13 @@ const PlayersTable: React.FC<Props> = ({ players }) => {
             key: 'FGP',
           },
           {
-            key: 'FGP',
+            key: 'FGS',
           },
           {
-            key: 'FGP',
+            key: 'FGA',
           },
           {
-            key: 'FGP',
+            key: 'FGT',
           },
         ],
       },
@@ -67,16 +67,29 @@ const PlayersTable: React.FC<Props> = ({ players }) => {
         <thead>
           <tr>
             {headers.map((header) => {
-              if (!header.subHeaders) return <th rowSpan={2}>{header.key}</th>;
+              if (!header.subHeaders)
+                return (
+                  <th key={header.key} rowSpan={2}>
+                    {header.key}
+                  </th>
+                );
 
-              return <th colSpan={header.subHeaders.length}>{header.key}</th>;
+              return (
+                <th key={header.key} colSpan={header.subHeaders.length}>
+                  {header.key}
+                </th>
+              );
             })}
           </tr>
           <tr>
             {headers.map((header) => {
               if (!header.subHeaders) return null;
 
-              return header.subHeaders.map((subHeader) => <th className="table-sub-header">{subHeader.key}</th>);
+              return header.subHeaders.map((subHeader) => (
+                <th key={subHeader.key} className="table-sub-header">
+                  {subHeader.key}
+                </th>
+              ));
             })}
           </tr>
         </thead>
