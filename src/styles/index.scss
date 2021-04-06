@@ -4,7 +4,6 @@
 @import './setup/layout';
 @import './setup/mixins';
 
-
 // Components
 @import '../components/layout/styles/Header.scss';
 @import '../components/common/styles/ToggleCheckbox.scss';
@@ -15,7 +14,4 @@
 @import '../components/pages/styles/HomePage.scss';
 @import '../components/pages/styles/CreateLeaguePage.scss';
 @import '../components/pages/styles/CreateLeagueStep.scss';
-
-
-
-
+@import '../components/common/styles/Table.scss';

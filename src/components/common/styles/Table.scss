@@ -1,0 +1,53 @@
+.table-container {
+  max-height: 60vh;
+  overflow-y: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  tr,
+  td,
+  th {
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .table-sub-header {
+    font-size: 1.15rem;
+  }
+
+  td {
+    padding: 1rem;
+  }
+
+  .table-body-row:nth-child(2n + 1) {
+    background-color: #ddebf7;
+  }
+
+  .player-info {
+    display: flex;
+
+    img {
+      display: inline-block;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      margin-inline-end: 1rem;
+    }
+
+    .player-basic {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      h4 {
+        grid-column: 1 / -1;
+      }
+
+      p {
+        font-size: 1.15rem;
+      }
+    }
+  }
+}

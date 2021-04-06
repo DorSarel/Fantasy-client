@@ -1,75 +1,118 @@
 import React from 'react';
 import { IPlayer } from '../../models/Player/PlayerModels';
-import { useTable } from 'react-table';
+import PlayerInfo from './PlayerData';
 
 interface Props {
   players: IPlayer[];
 }
 
-const PlayersTable: React.FC<Props> = ({ players }) => {
-  const data = React.useMemo(() => {
-    return players.map((h) => {
-      return {
-        player: h.firstName + ' ' + h.lastName,
-        avg: 34.8,
-        weeklyGames: h.weeklyGames,
-        stats: '',
-        total: 40,
-      };
-    });
-  }, [players]);
+// MAKE IT MORE GENEREIC BY PASSING THE HEADERS AS PROPS
 
-  const columns = React.useMemo(
+const PlayersTable: React.FC<Props> = ({ players }) => {
+  const headers = React.useMemo(
     () => [
       {
-        Header: 'Player',
+        key: 'Player',
       },
       {
-        Header: 'Avg',
+        key: 'Avg',
       },
       {
-        Header: 'Weekly Games',
+        key: 'Weekly Games',
       },
       {
-        Header: 'Stats',
+        key: 'Stats',
+        subHeaders: [
+          {
+            key: 'PPG',
+          },
+          {
+            key: 'RPG',
+          },
+          {
+            key: 'FGP',
+          },
+          {
+            key: 'FGS',
+          },
+          {
+            key: 'FGA',
+          },
+          {
+            key: 'FGT',
+          },
+        ],
       },
       {
-        Header: 'Total',
+        key: 'Total',
       },
     ],
     []
   );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
-
-  console.log(rows);
+  const data = React.useMemo(
+    () =>
+      players.map((player) => {
+        return {
+          player: player,
+          avg: 30,
+          weeklyGames: player.weeklyGames,
+          stats: '',
+          total: 52.5,
+          id: player.playerId,
+        };
+      }),
+    [players]
+  );
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => {
-          return (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((header) => (
-                <th {...header.getHeaderProps()}>{header.render('Header')}</th>
-              ))}
+    <div className="table-container">
+      <table>
+        <thead>
+          <tr>
+            {headers.map((header) => {
+              if (!header.subHeaders)
+                return (
+                  <th key={header.key} rowSpan={2}>
+                    {header.key}
+                  </th>
+                );
+
+              return (
+                <th key={header.key} colSpan={header.subHeaders.length}>
+                  {header.key}
+                </th>
+              );
+            })}
+          </tr>
+          <tr>
+            {headers.map((header) => {
+              if (!header.subHeaders) return null;
+
+              return header.subHeaders.map((subHeader) => (
+                <th key={subHeader.key} className="table-sub-header">
+                  {subHeader.key}
+                </th>
+              ));
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((playerData) => (
+            <tr className="table-body-row" key={playerData.id}>
+              <PlayerInfo playerData={playerData.player} />
+              <td style={{ width: '5rem' }}>{playerData.avg}</td>
+              <td style={{ width: '10rem' }}>{playerData.weeklyGames}</td>
+              <td>{playerData.stats}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{playerData.total}</td>
             </tr>
-          );
-        })}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          console.log(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
