@@ -6,6 +6,8 @@ interface Props {
   players: IPlayer[];
 }
 
+// MAKE IT MORE GENEREIC BY PASSING THE HEADERS AS PROPS
+
 const PlayersTable: React.FC<Props> = ({ players }) => {
   const headers = React.useMemo(
     () => [

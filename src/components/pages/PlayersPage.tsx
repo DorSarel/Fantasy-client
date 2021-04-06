@@ -7,6 +7,7 @@ import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayersTable from '../common/PlayersTable';
 
+// MOCK DATA
 const players: IPlayer[] = [
   {
     firstName: 'Dor',
