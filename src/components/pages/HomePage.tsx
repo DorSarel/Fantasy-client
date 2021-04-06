@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import trophy from "../../assets/images/trophy 1.png"
 import twitter from "../../assets/images/twitter-icon.png"
 import instagram from "../../assets/images/instagram-icon.png"
 import youtube from "../../assets/images/youtube-icon.png"
 import GlobalList from "../common/ListView";
 import MediaBox from "../common/MediaBox";
-import { Link, NavLink } from "react-router-dom";
+import {Link} from "react-router-dom";
 import { GlobalPaths } from '../common/GlobalPath';
-
 
 const HomePage = () => {
     return (

@@ -1,7 +1,7 @@
 .create-league-step{
 
 .div1{
-    
+    margin-right: 28rem;
  input{
     width: 40rem;
     height: 4rem;
@@ -14,6 +14,7 @@ span{
     position: relative;
     margin-right: 28rem;
         color:var(--color-nav); 
+        
 }
 }
 
@@ -23,7 +24,8 @@ span{
 
 
 .div2, .div3 {
-    margin-top: 3rem;
+    margin-top: 2em;
+    margin-right: 25rem;
 
     .MuiSvgIcon-root{
         float: left;
@@ -35,6 +37,20 @@ span{
         flex-wrap: wrap;
         flex-direction: column;
     }
+
 }
 
+.div2{
+margin-right: 45rem;
+h3{
+    margin-right: 13rem;
+}
+}
+
+.div3{
+margin-right: 32rem;
+h3{
+    margin-right: 29rem;
+}
+}
 }

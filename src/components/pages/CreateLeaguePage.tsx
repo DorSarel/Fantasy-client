@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import trophy from "../../assets/images/trophy 1.png"
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -8,12 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import CreateLeagueStep from "./CreateLeagueArea/CreateLeagueStep";
 
 const CreateLeague = () => {
-
-
     function getSteps() {
         return ['Create League', 'Invite', 'My Team'];
     }
-
 
     function getStepContent(step: number) {
         switch (step) {
@@ -30,8 +27,6 @@ const CreateLeague = () => {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
-   
-
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
@@ -39,7 +34,6 @@ const CreateLeague = () => {
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
-
 
         const handleReset = () => {
             setActiveStep(0);
@@ -66,16 +60,16 @@ const CreateLeague = () => {
                     <div>
                         {activeStep === steps.length ? (
                             <div>
-                                <Typography>
-                                    All steps completed - you&apos;re finished
-            </Typography>
+                                <Typography variant="body1" component="h3">
+                                    Greate Job!
+                                 </Typography>
                                 <Button size="large" onClick={handleReset}>
                                     Reset
-            </Button>
+                                </Button>
                             </div>
                         ) : (
                             <div>
-                                <Typography >{getStepContent(activeStep)}</Typography>
+                                <Typography variant="body1" component="span">{getStepContent(activeStep)}</Typography>
                                 <div>
                                     <Button size="large" disabled={activeStep === 0} onClick={handleBack} >
                                         Back
@@ -93,32 +87,7 @@ const CreateLeague = () => {
                         )}
                     </div>
                 </div>
-
             </>
         );
     }
-
 export default CreateLeague;
-
-
-
-{/* <RadioGroup aria-label="team" name="team" value={numOfTeams} onChange={handleSubmit}>
-<Radio value="8" size="small" />
-<Radio value="10"  size="small"/>
-<Radio value="12"size="small" />
-<Radio value="14"size="small" />
-<FormControlLabel value="1" control={<Radio size="small"/>} label="Head to Head points"/>
-<FormControlLabel value="2" control={<Radio size="small"/>} label="Head to Head category" />
-<FormControlLabel value="3" control={<Radio size="small"/>} label="Roto" />
-<FormControlLabel value="3" control={<Radio size="small"/>} label="Roto" />
-
-</RadioGroup>
-          </div>
-              <h3>Scoring Type</h3>
-          <div className="div3">
-<RadioGroup aria-label="team" name="team" value={team} onChange={handleChange}>
-<FormControlLabel value="1" control={<Radio size="small"/>} label="Head to Head points"/>
-<FormControlLabel value="2" control={<Radio size="small"/>} label="Head to Head category" />
-<FormControlLabel value="3" control={<Radio size="small"/>} label="Roto" />
-</RadioGroup>
-          </div> */}

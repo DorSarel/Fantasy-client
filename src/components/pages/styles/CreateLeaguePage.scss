@@ -1,6 +1,6 @@
 .create-league {
     @include use-basic-page-setup;
-    height: 64rem;
+    height: 60rem;
     margin-top: 3rem;
     color: white;
     padding: 0;
@@ -53,14 +53,19 @@
     padding-right: 8px;
     position: relative;
     bottom: 6rem;
+
+    //number inside circl
+    .MuiStepIcon-text {
+        font-size: 1.5rem;
+    }
 }
 
 button{
-    top: 10rem;
     font-size: large;
     margin-left: 3rem;
-    border-radius: 5rem;
+    border-radius: 3rem;
     position: static;
+    float: right;
 }
 
 .MuiTypography-body2 {
