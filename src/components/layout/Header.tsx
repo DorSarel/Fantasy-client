@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { GlobalPaths } from '../common/GlobalPath';
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
       <nav className="header-nav">
         <ul>
           <li className="header-nav-item">
-            <Link to="/">Home</Link>
+            <Link to={GlobalPaths.homeUrl}>Home</Link>
           </li>
           <li className="header-nav-item">
             <Link to="/">My Team</Link>
@@ -20,7 +21,7 @@ const Header = () => {
             <Link to="/">Matchup</Link>
           </li>
           <li className="header-nav-item">
-            <Link to="/players">Players</Link>
+            <Link to={GlobalPaths.playersUrl}>Players</Link>
           </li>
         </ul>
       </nav>

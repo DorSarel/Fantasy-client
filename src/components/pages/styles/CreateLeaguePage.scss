@@ -1,0 +1,81 @@
+.create-league {
+    @include use-basic-page-setup;
+    height: 60rem;
+    margin-top: 3rem;
+    color: white;
+    padding: 0;
+
+    
+    &-title {   
+        background-color: var(--color-nav);
+        border-radius: 1rem;
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        margin-bottom:1rem ;
+    }
+
+    img{
+        width: 5rem;
+    }
+    
+    .MuiTypography-body1 {
+        color: black;
+    }
+
+.MuiStep-horizontal {
+    padding-left:0.8rem;
+    padding-right: 0.8rem;
+}
+
+.MuiStepConnector-line {
+    display: none;
+} 
+
+.MuiStepIcon-root {
+    color: rgba(0, 0, 0, 0.38);
+    display: block;
+}
+//circle
+.MuiSvgIcon-root {
+    width: 6rem;
+    height: 6rem;
+    box-sizing: border-box;
+    background-color: none;
+    border: 1px solid white;
+    box-shadow: 0px 0px 0px 4px white;
+    border-radius: 50%;
+    background-color: white;
+}
+//circle
+.MuiStepLabel-iconContainer {
+    display: flex;
+    padding-right: 8px;
+    position: relative;
+    bottom: 6rem;
+
+    //number inside circl
+    .MuiStepIcon-text {
+        font-size: 1.5rem;
+    }
+}
+
+button{
+    font-size: large;
+    margin-left: 3rem;
+    border-radius: 3rem;
+    position: static;
+    float: right;
+}
+
+.MuiTypography-body2 {
+    font-size: 2rem; 
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 0;
+    letter-spacing: 0.01071em;
+}
+
+}
+
+

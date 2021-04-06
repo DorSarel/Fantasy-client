@@ -1,0 +1,76 @@
+.welcome-main {
+  color: #051C2D;
+  margin-top: 5rem;
+}
+
+img {
+  width: 10.6rem;
+}
+
+.middle-column {
+  text-align: center;
+}
+
+h1 {
+  font-family: Roboto;
+  font-size: 6.4rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 7.5rem;
+}
+
+p {
+  font-family: Roboto;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 2.9rem;
+}
+
+.create-join-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.create-join-btn a, .create-join-btn a:nth-child(1), .create-join-btn a:nth-child(2) {
+  width: 18.7rem;
+  height: 7.8rem;
+  background: #051C2D;
+  border: 0.1rem solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: large;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.right-boxes, .left-boxes {
+  margin-top: 3rem;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+h2 {
+  margin-left: 13rem;
+}
+/*# sourceMappingURL=HomePage.css.map */

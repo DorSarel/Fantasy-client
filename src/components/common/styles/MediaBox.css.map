@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACP,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EAEb,UAAU,EAAE,OAAO;EACnB,MAAM,EAAE,iBAAiB;EACzB,UAAU,EAAE,UAAU;EACtB,aAAa,EAAE,IAAI;CAElB",
+    "sources": [
+        "MediaBox.scss"
+    ],
+    "names": [],
+    "file": "MediaBox.css"
+}

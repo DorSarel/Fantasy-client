@@ -1,0 +1,14 @@
+.mediaBox{
+  @include use-basic-page-setup;
+
+  width: 18.7rem;
+  height: 17.4rem;
+  
+  background: #FFFFFF;
+  border: 1px solid #898989;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  margin-left: 12rem;
+  }
+
+  

@@ -1,0 +1,38 @@
+.create-league-step .div1 input {
+  width: 40rem;
+  height: 4rem;
+  border-width: 0.2rem;
+  border-radius: 1rem;
+  font-size: x-large;
+}
+
+.create-league-step .div1 span {
+  font-size: large;
+  position: relative;
+  margin-right: 28rem;
+  color: var(--color-nav);
+}
+
+.create-league-step .MuiFormControlLabel-root {
+  display: inline-block;
+}
+
+.create-league-step .div2, .create-league-step .div3 {
+  margin-top: 3rem;
+}
+
+.create-league-step .div2 .MuiSvgIcon-root, .create-league-step .div3 .MuiSvgIcon-root {
+  float: left;
+  width: 3rem;
+}
+
+.create-league-step .div2 .MuiFormGroup-root, .create-league-step .div3 .MuiFormGroup-root {
+  display: inline;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+/*# sourceMappingURL=CreateLeagueStep.css.map */
