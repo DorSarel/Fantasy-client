@@ -1,0 +1,67 @@
+.slider{
+    position: relative;
+    height: 26rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 10rem;
+
+    .card{
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 1rem;
+        width: 15rem;
+        height: 8rem;
+        margin: 1rem;
+
+        p{
+            font-size: small;
+        }
+        
+        p:nth-child(1){
+            position: block;
+            display: flex;
+           margin-left: 2px;
+        }
+              .firstTeam{
+                  display: inline-flex;
+                  float: left;
+                  font-size: x-small;
+                img{
+                    width: 3rem;  
+                    height: 2rem;
+                    }
+              }
+
+              .secondTeam{
+                display: inline-flex;
+                float: left;
+                font-size: x-small;
+                img{
+                    width: 3rem;  
+                    height: 2rem;
+                    } 
+              }
+            
+    }
+
+button {
+    position: absolute;
+    font-size: 3rem;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.forward{
+@extend button;
+right: -8rem;
+}
+.back{
+    @extend button;
+left: -8rem;
+ }
+}
+
+

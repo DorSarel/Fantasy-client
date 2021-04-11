@@ -1,0 +1,47 @@
+.slider {
+  position: relative;
+  height: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slider .mediaBox {
+  margin: 0 10px;
+  height: 10rem;
+  width: 13rem;
+}
+
+.slider .card {
+  width: 5rem;
+  height: 3rem;
+  border-radius: 1rem;
+}
+
+.slider button, .slider .forward, .slider .back {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: black;
+  z-index: 10;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.slider .forward {
+  right: 3.2rem;
+}
+
+.slider .back {
+  left: 3.2;
+}
+/*# sourceMappingURL=Slider.css.map */

@@ -1,12 +1,22 @@
 import React from 'react';
-import BoxModel from '../../models/box/boxModels';
 
+interface Props {
+    firstTeam?: string;
+        secondTeam?: string;
+        header?: string;
+        firstScore?: number;
+        secondScore?: number;
+}
 
+const MediaBox: React.FC<Props> = ({ firstTeam, secondTeam, header, firstScore, secondScore}) => {
 
-const MediaBox = () => {
- 
     return (
         <div className="mediaBox">
+            <p>{header}</p>
+            <p>{firstTeam}</p>
+            <p>{secondTeam}</p>
+            <p>{firstScore}</p>
+            <p>{secondScore}</p>
         </div>
     );
 };

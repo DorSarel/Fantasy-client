@@ -5,7 +5,7 @@ import PlayersPage from './components/pages/PlayersPage';
 import HomePage from './components/pages/HomePage';
 import { GlobalPaths } from './components/common/GlobalPath';
 import CreateLeague from './components/pages/CreateLeaguePage';
-import MyTeam from './components/pages/MyTeam';
+import MyTeam from './components/pages/MyTeamPage';
 
 const App = () => {
   return (

@@ -1,0 +1,59 @@
+.table-container {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container tr,
+.table-container td,
+.table-container th {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.table-container .table-sub-header {
+  font-size: 1.15rem;
+}
+
+.table-container td {
+  padding: 1rem;
+}
+
+.table-container .table-body-row:nth-child(2n + 1) {
+  background-color: #ddebf7;
+}
+
+.table-container .player-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.table-container .player-info img {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
+}
+
+.table-container .player-info .player-basic {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.table-container .player-info .player-basic h4 {
+  grid-column: 1 / -1;
+}
+
+.table-container .player-info .player-basic p {
+  font-size: 1.15rem;
+}
+/*# sourceMappingURL=Table.css.map */

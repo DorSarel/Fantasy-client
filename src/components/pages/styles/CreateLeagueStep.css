@@ -1,3 +1,7 @@
+.create-league-step .div1 {
+  margin-right: 28rem;
+}
+
 .create-league-step .div1 input {
   width: 40rem;
   height: 4rem;
@@ -18,7 +22,8 @@
 }
 
 .create-league-step .div2, .create-league-step .div3 {
-  margin-top: 3rem;
+  margin-top: 2em;
+  margin-right: 25rem;
 }
 
 .create-league-step .div2 .MuiSvgIcon-root, .create-league-step .div3 .MuiSvgIcon-root {
@@ -34,5 +39,21 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.create-league-step .div2 {
+  margin-right: 45rem;
+}
+
+.create-league-step .div2 h3 {
+  margin-right: 13rem;
+}
+
+.create-league-step .div3 {
+  margin-right: 32rem;
+}
+
+.create-league-step .div3 h3 {
+  margin-right: 29rem;
 }
 /*# sourceMappingURL=CreateLeagueStep.css.map */
