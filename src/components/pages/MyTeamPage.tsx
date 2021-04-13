@@ -95,28 +95,15 @@ const MyTeam = () => {
         },
     ];
 
-    const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
     const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>(players);
-    const [teamName, setTeamName] = useState('');
 
 
-    useEffect(() => {
-        filterPlayers();
-    }, [positionsFilters, teamName]);
-
+   
     const filterPlayers = () => {
         let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
-
-        if (positionsFilters.length > 0) {
-            newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.leagues.standard.pos));
-        }
-
-        if (teamName !== '') {
-            newFilteredArray = newFilteredArray.filter((player) => player.teamName === teamName);
-        }
-
         setFilteredPlayers(newFilteredArray);
     };
+    
     return (
         <>
             <div className="left-column articles">
@@ -144,7 +131,7 @@ const MyTeam = () => {
                     <CardsSlider />
                 </div>
                 <div className="table">
-                    <PlayersTable players={filteredPlayers} />
+                    {/* <PlayersTable headers={headers} players={filteredPlayers} /> */}
                 </div>
             </div>
 

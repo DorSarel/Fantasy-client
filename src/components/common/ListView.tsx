@@ -2,21 +2,21 @@ import React from 'react';
 
 interface Props {
     header?: string;
-    player1?: string;
-    player2?: string;
-    player3?: string;
+    label1?: string;
+    label2?: string;
+    label3?: string;
 
 }
 
-const ListViewComponent:React.FC<Props> = ({header, player1, player2, player3}) => {
+const ListViewComponent:React.FC<Props> = ({header, label1, label2, label3}) => {
  
     return (
         <div className="global-list">
            <ul className="list">
                <li>{header}</li>
-               <li>{player1}</li>
-               <li>{player2}</li>
-               <li style={{borderRadius:"1rem"}}>{player3}</li>
+               <li>{label1}</li>
+               <li>{label2}</li>
+               <li style={{borderRadius:"1rem"}}>{label3}</li>
            </ul>
         </div>
     );

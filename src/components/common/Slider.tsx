@@ -41,9 +41,7 @@ const CardsSlider = () => {
     ];
 
     const nextSlide = () => {
-        setCurrent(current === data.length - 1 ? 0 : +1);
-        console.log("hey");
-
+        setCurrent(current === data.length - 1 ? 0 : current + 1);
     }
 
     const prevSlide = () => {

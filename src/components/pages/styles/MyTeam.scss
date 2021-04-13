@@ -1,8 +1,9 @@
 .main-div{
 @include column-layout-basic;
-margin-right: 9rem;
+// margin-right: 16rem;
+overflow: hidden;
   .hoopers{
-    left: 46rem;
+    left: 38rem;
     width: 13rem;
     height: 12rem;
     position: absolute;
@@ -52,7 +53,8 @@ margin-right: 9rem;
 
 .weekly-recap{
  @include use-basic-page-setup;
-
+position: relative;
+left: 10rem;
  width: 20rem;
  height: 38rem;
  border: 1px solid rgb(96, 96, 96);
@@ -79,16 +81,16 @@ right: 13rem;
 .articles{
     position: relative;
     margin: 2rem;
-    left: 4rem;
     .mediaBox{
         height: 8rem;
         margin:  1rem ;
-        margin-left: 12rem;
+        margin-left: 7rem;
     }
 
     .bottom-boxes{
         position: relative;
        top: 8rem;
+       right: 5rem;
        
         .global-list{
           width: 18.7rem;
