@@ -212,7 +212,7 @@ img {
   padding: 1rem;
   border-radius: 10px;
   width: 18.7rem;
-  height: 17.4rem;
+  height: 19.7rem;
   background: #FFFFFF;
   border: 1px solid #898989;
   -webkit-box-sizing: border-box;
@@ -304,7 +304,7 @@ select {
   border-radius: 10px;
   margin-top: 2.8rem;
   width: 18.7rem;
-  height: 17.4rem;
+  height: 19.8rem;
   border: 1px solid #898989;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -325,6 +325,53 @@ select {
   -moz-transition: all 0.2s;
   -ms-transition: all 0.2s;
   -o-transition: all 0.2s;
+}
+
+.slider {
+  position: relative;
+  height: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slider .mediaBox {
+  margin: 0 10px;
+  height: 7rem;
+  width: 10rem;
+}
+
+.slider .card {
+  width: 5rem;
+  height: 3rem;
+  border-radius: 1rem;
+}
+
+.slider button, .slider .forward, .slider .back {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: black;
+  z-index: 10;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.slider .forward {
+  right: 3.2rem;
+}
+
+.slider .back {
+  left: 3.2;
 }
 
 .players-filters {
@@ -518,7 +565,7 @@ h2 {
   padding: 1rem;
   border-radius: 10px;
   height: 60rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
   color: white;
   padding: 0;
 }
@@ -533,7 +580,7 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 10rem;
+  margin-bottom: 1rem;
 }
 
 .create-league img {
@@ -545,7 +592,6 @@ h2 {
 }
 
 .create-league .MuiStep-horizontal {
-  margin-bottom: 10rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
@@ -561,19 +607,267 @@ h2 {
 
 .create-league .MuiSvgIcon-root {
   width: 6rem;
-  height: 8rem;
+  height: 6rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: none;
+  border: 1px solid white;
+  -webkit-box-shadow: 0px 0px 0px 4px white;
+          box-shadow: 0px 0px 0px 4px white;
+  border-radius: 50%;
+  background-color: white;
 }
 
-.create-league button {
-  top: 10rem;
+.create-league .MuiStepLabel-iconContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 8px;
+  position: relative;
+  bottom: 6rem;
+}
+
+.create-league .MuiStepLabel-iconContainer .MuiStepIcon-text {
+  font-size: 1.5rem;
+}
+
+.create-league button, .create-league .slider .forward, .slider .create-league .forward, .create-league .slider .back, .slider .create-league .back {
   font-size: large;
   margin-left: 3rem;
-  border-radius: 5rem;
+  border-radius: 3rem;
+  position: static;
+  float: right;
 }
 
 .create-league .MuiTypography-body2 {
   font-size: 2rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
+  line-height: 0;
+  letter-spacing: 0.01071em;
+}
+
+.create-league-step .div1 {
+  margin-right: 28rem;
+}
+
+.create-league-step .div1 input {
+  width: 40rem;
+  height: 4rem;
+  border-width: 0.2rem;
+  border-radius: 1rem;
+  font-size: x-large;
+}
+
+.create-league-step .div1 span {
+  font-size: large;
+  position: relative;
+  margin-right: 28rem;
+  color: var(--color-nav);
+}
+
+.create-league-step .MuiFormControlLabel-root {
+  display: inline-block;
+}
+
+.create-league-step .div2, .create-league-step .div3 {
+  margin-top: 2em;
+  margin-right: 25rem;
+}
+
+.create-league-step .div2 .MuiSvgIcon-root, .create-league-step .div3 .MuiSvgIcon-root {
+  float: left;
+  width: 3rem;
+}
+
+.create-league-step .div2 .MuiFormGroup-root, .create-league-step .div3 .MuiFormGroup-root {
+  display: inline;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.create-league-step .div2 {
+  margin-right: 45rem;
+}
+
+.create-league-step .div2 h3 {
+  margin-right: 13rem;
+}
+
+.create-league-step .div3 {
+  margin-right: 32rem;
+}
+
+.create-league-step .div3 h3 {
+  margin-right: 29rem;
+}
+
+.table-container {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container tr,
+.table-container td,
+.table-container th {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.table-container .table-sub-header {
+  font-size: 1.15rem;
+}
+
+.table-container td {
+  padding: 1rem;
+}
+
+.table-container .table-body-row:nth-child(2n + 1) {
+  background-color: #ddebf7;
+}
+
+.table-container .player-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.table-container .player-info img {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
+}
+
+.table-container .player-info .player-basic {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.table-container .player-info .player-basic h4 {
+  grid-column: 1 / -1;
+}
+
+.table-container .player-info .player-basic p {
+  font-size: 1.15rem;
+}
+
+.main-div {
+  min-height: calc(100vh - 44px);
+  padding: 2rem;
+  margin-right: 9rem;
+}
+
+.main-div .hoopers {
+  left: 46rem;
+  width: 13rem;
+  height: 12rem;
+  position: absolute;
+}
+
+.main-div .table {
+  position: relative;
+  margin-top: 4rem;
+}
+
+.main-div .main-div-text {
+  position: relative;
+  top: 1rem;
+  font-size: large;
+}
+
+.main-div .main-div-text p:nth-child(2) {
+  font-size: medium;
+}
+
+.main-div .main-div-text p:nth-child(3) {
+  font-size: medium;
+  margin-top: 2rem;
+}
+
+.main-div .main-div-text .left-text {
+  float: right;
+  position: relative;
+  bottom: 20rem;
+}
+
+.main-div .main-div-text .left-text img {
+  position: relative;
+  top: 9.5rem;
+  width: 6rem;
+  height: 6rem;
+  z-index: -2;
+}
+
+.main-div .main-div-text .left-text p {
+  color: white;
+  margin: 4rem;
+  font-size: large;
+}
+
+.weekly-recap {
+  font-size: 1.5rem;
+  background-color: var(--color-white);
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 20rem;
+  height: 38rem;
+  border: 1px solid #606060;
+}
+
+.weekly-recap .border {
+  width: 19.9rem;
+  height: 0.1rem;
+  background: black;
+  position: relative;
+  right: 1rem;
+}
+
+.weekly-recap .twitter-box {
+  position: relative;
+  top: 40rem;
+  right: 13rem;
+}
+
+.weekly-recap .twitter-box .mediaBox {
+  width: 20rem;
+}
+
+.articles {
+  position: relative;
+  margin: 2rem;
+  left: 4rem;
+}
+
+.articles .mediaBox {
+  height: 8rem;
+  margin: 1rem;
+  margin-left: 12rem;
+}
+
+.articles .bottom-boxes {
+  position: relative;
+  top: 8rem;
+}
+
+.articles .bottom-boxes .global-list {
+  width: 18.7rem;
+  height: 19.3rem;
+  margin-left: 12rem;
+  font-size: small;
 }
 /*# sourceMappingURL=index.css.map */

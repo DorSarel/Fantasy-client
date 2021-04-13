@@ -15,7 +15,7 @@ const Header = () => {
             <Link to={GlobalPaths.homeUrl}>Home</Link>
           </li>
           <li className="header-nav-item">
-            <Link to="/">My Team</Link>
+            <Link to={GlobalPaths.myTeamUrl}>My Team</Link>
           </li>
           <li className="header-nav-item">
             <Link to="/">Matchup</Link>

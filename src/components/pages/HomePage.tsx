@@ -30,9 +30,9 @@ const HomePage = () => {
                 <MediaBox />
             </div>
             <div className="right-boxes right-column">
-                <GlobalList />
-                <GlobalList />
-                <GlobalList />
+                <GlobalList header="Tonight Games: "/>
+                <GlobalList header="Last Games: "/>
+                <GlobalList header="Top Added Players: "/>
             </div>
         </>
     );
