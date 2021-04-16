@@ -1,66 +1,59 @@
-.slider{
-    position: relative;
-    height: 26rem;
+.slider {
+  position: relative;
+  height: 26rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  left: 6rem;
+
+  .card {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 6rem;
+    flex-direction: column;
+    padding: 1rem;
 
-    .card{
-        background-color: white;
-        border: 1px solid black;
-        border-radius: 1rem;
-        width: 12rem;
-        height: 6rem;
-        margin: 1rem;
-        p{
-            font-size: smaller;
-        }
-        
-        p:nth-child(1){
-            position: block;
-            display: flex;
-           margin-left: 2px;
-        }
-              .firstTeam{
-                  display: inline-flex;
-                  float: left;
-                  font-size: x-small;
-                img{
-                    width: 3rem;  
-                    height: 2rem;
-                    }
-              }
-
-              .secondTeam{
-                display: inline-flex;
-                float: left;
-                font-size: x-small;
-                img{
-                    width: 3rem;  
-                    height: 2rem;
-                    } 
-              }
-            
+    p {
+      font-size: 1.5rem;
     }
 
-button {
+    .card-title {
+      align-self: flex-start;
+    }
+
+    .card-team {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p:nth-child(3) {
+        margin-left: 4rem;
+      }
+
+      img {
+        display: block;
+        width: 3rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  button {
     position: absolute;
     font-size: 3rem;
     color: black;
     z-index: 10;
     cursor: pointer;
     user-select: none;
-}
+  }
 
-.forward{
-@extend button;
-right: -6rem;
-}
-.back{
+  .forward {
     @extend button;
-left: -6rem;
- }
+    right: -6rem;
+  }
+  .back {
+    @extend button;
+    left: -6rem;
+  }
 }
-
-

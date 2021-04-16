@@ -139,9 +139,7 @@ const MyTeam = () => {
         <div className="slider-main">
           <CardsSlider />
         </div>
-        <div className="table">
-          <PlayersTable headers={headers} players={players} />
-        </div>
+        <PlayersTable headers={headers} players={players} />
       </div>
 
       <div className="right-column weekly-recap">
