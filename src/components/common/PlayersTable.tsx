@@ -2,53 +2,17 @@ import React from 'react';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayerInfo from './PlayerData';
 
-interface Props {
-  players: IPlayer[];
+interface IHeader {
+  key: string;
+  subHeaders?: IHeader[];
 }
 
-// MAKE IT MORE GENEREIC BY PASSING THE HEADERS AS PROPS
+interface Props {
+  players: IPlayer[];
+  headers: IHeader[];
+}
 
-const PlayersTable: React.FC<Props> = ({ players }) => {
-  const headers = React.useMemo(
-    () => [
-      {
-        key: 'Player',
-      },
-      {
-        key: 'Avg',
-      },
-      {
-        key: 'Weekly Games',
-      },
-      {
-        key: 'Stats',
-        subHeaders: [
-          {
-            key: 'PPG',
-          },
-          {
-            key: 'RPG',
-          },
-          {
-            key: 'FGP',
-          },
-          {
-            key: 'FGS',
-          },
-          {
-            key: 'FGA',
-          },
-          {
-            key: 'FGT',
-          },
-        ],
-      },
-      {
-        key: 'Total',
-      },
-    ],
-    []
-  );
+const PlayersTable: React.FC<Props> = ({ headers, players }) => {
   const data = React.useMemo(
     () =>
       players.map((player) => {

@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import SelectInput from '../common/SelectInput';
-import ToggleCheckbox from '../common/ToggleCheckbox';
 import PlayersPositionsFilter from '../PlayersPage/PlayersPositionsFilter';
 import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
@@ -75,6 +74,44 @@ const players: IPlayer[] = [
   },
 ];
 
+const headers = [
+  {
+    key: 'Player',
+  },
+  {
+    key: 'Avg',
+  },
+  {
+    key: 'Weekly Games',
+  },
+  {
+    key: 'Stats',
+    subHeaders: [
+      {
+        key: 'PPG',
+      },
+      {
+        key: 'RPG',
+      },
+      {
+        key: 'FGP',
+      },
+      {
+        key: 'FGS',
+      },
+      {
+        key: 'FGA',
+      },
+      {
+        key: 'FGT',
+      },
+    ],
+  },
+  {
+    key: 'Total',
+  },
+];
+
 const PlayersPage = () => {
   const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
   const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>(players);
@@ -134,12 +171,10 @@ const PlayersPage = () => {
         </div>
       </div>
       <div className="players-main middle-column">
-        <PlayersTable players={filteredPlayers} />
+        <PlayersTable headers={headers} players={filteredPlayers} />
       </div>
     </>
   );
 };
 
 export default PlayersPage;
-
-
