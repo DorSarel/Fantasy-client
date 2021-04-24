@@ -16,7 +16,7 @@ const App = () => {
         <Route path={GlobalPaths.homeUrl} exact component={HomePage} />
         <Route path={GlobalPaths.createLeagueUrl} exact component={CreateLeague} />
         <Route path={GlobalPaths.myTeamUrl} exact component={MyTeam} />
-        <Redirect from='/' to='home' exact />
+        <Redirect from="/" to="home" exact />
       </Router>
     </div>
   );
