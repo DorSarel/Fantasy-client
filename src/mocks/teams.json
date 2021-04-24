@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Team Hoopers",
+        "league_name": "Amazing",
+        "id": 1,
+        "stats": {
+            "pos": 1,
+            "games_won": 5,
+            "games_lost": 1
+        },
+        "matches": {
+            "previous": {
+                "rival_id": 2,
+                "rival_name": "Katzav's Buchers",
+                "score": [981, 1031]
+            },
+            "current": {
+                "rival_id": 4,
+                "rival_name": "Carmon's Interns",
+                "score": [468, 512]
+            },
+            "next": {
+                "rival_id": 3,
+                "rival_name": "Team Netanel",
+                "score": []
+            }
+        },
+        "players": [
+            {
+                "firstName": "Deni",
+                "lastName": "Avdija",
+                "playerId": 6,
+                "teamName": "Washington Wizards",
+                "weeklyGames": 3,
+                "teamId": 4,
+                "heightInMeters": 2.06,
+                "leagues": {
+                  "standard": {
+                    "active": true,
+                    "pos": "F",
+                    "jersey": 9
+                  }
+                },
+                "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630166.png"
+            },
+            {
+                "firstName": "LaMelo",
+                "lastName": "Ball",
+                "playerId": 7,
+                "teamName": "Charlotte Hornets",
+                "weeklyGames": 3,
+                "teamId": 5,
+                "heightInMeters": 1.98,
+                "leagues": {
+                  "standard": {
+                    "active": true,
+                    "pos": "G",
+                    "jersey": 2
+                  }
+                },
+                "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630163.png"
+            },
+            {
+                "firstName": "Will",
+                "lastName": "Barton",
+                "playerId": 8,
+                "teamName": "Denver Nuggets",
+                "weeklyGames": 3,
+                "teamId": 6,
+                "heightInMeters": 1.98,
+                "leagues": {
+                  "standard": {
+                    "active": true,
+                    "pos": "PG",
+                    "jersey": 5
+                  }
+                },
+                "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/203115.png"
+            }
+        ]
+    }
+]

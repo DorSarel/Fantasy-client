@@ -1,0 +1,87 @@
+[
+    {
+        "firstName": "Precious",
+        "lastName": "Achiuwa",
+        "playerId": 1,
+        "teamName": "Miami Heat",
+        "weeklyGames": 3,
+        "teamId": 1,
+        "heightInMeters": 2.03,
+        "leagues": {
+          "standard": {
+            "active": true,
+            "pos": "F",
+            "jersey": 5
+          }
+        },
+        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630173.png"
+      },
+      {
+        "firstName": "LaMarcus",
+        "lastName": "Aldridge",
+        "playerId": 2,
+        "teamName": "Brooklyn Nets",
+        "weeklyGames": 4,
+        "teamId": 2,
+        "heightInMeters": 2.11,
+        "leagues": {
+          "standard": {
+            "active": true,
+            "pos": "C",
+            "jersey": 21
+          }
+        },
+        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/200746.png"
+      },
+      {
+        "firstName": "Giannis",
+        "lastName": "Antetokounmpo",
+        "playerId": 3,
+        "teamName": "Milwaukee Bucks",
+        "weeklyGames": 4,
+        "teamId": 3,
+        "heightInMeters": 2.11,
+        "leagues": {
+          "standard": {
+            "active": true,
+            "pos": "F",
+            "jersey": 34
+          }
+        },
+        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png"
+      },
+      {
+        "firstName": "Bradley",
+        "lastName": "Beal",
+        "playerId": 4,
+        "teamName": "Washington Wizards",
+        "weeklyGames": 3,
+        "teamId": 4,
+        "heightInMeters": 1.91,
+        "leagues": {
+          "standard": {
+            "active": true,
+            "pos": "G",
+            "jersey": 3
+          }
+        },
+        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/203078.png"
+      },
+      {
+        "firstName": "Jeff",
+        "lastName": "Teague",
+        "playerId": 5,
+        "teamName": "Milwaukee Bucks",
+        "weeklyGames": 4,
+        "teamId": 3,
+        "heightInMeters": 1.91,
+        "leagues": {
+          "standard": {
+            "active": true,
+            "pos": "SG",
+            "jersey": 5
+          }
+        },
+        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/201952.png"
+      }
+]

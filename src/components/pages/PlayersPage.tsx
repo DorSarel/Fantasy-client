@@ -6,73 +6,8 @@ import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayersTable from '../common/PlayersTable';
 
-// MOCK DATA
-const players: IPlayer[] = [
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 1,
-    teamName: 'Wizards',
-    weeklyGames: 3,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'SG',
-        jersey: 6,
-      },
-    },
-  },
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 2,
-    teamName: 'Los Angels Lakers',
-    weeklyGames: 3,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'PF',
-        jersey: 12,
-      },
-    },
-  },
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 3,
-    teamName: 'Los Angels Lakers',
-    weeklyGames: 3,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'SF',
-        jersey: 12,
-      },
-    },
-  },
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 4,
-    teamName: 'Portland',
-    weeklyGames: 5,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'C',
-        jersey: 9,
-      },
-    },
-  },
-];
+// Mock Data
+import players from '../../mocks/freePlayers.json';
 
 const headers = [
   {
@@ -115,7 +50,9 @@ const headers = [
 const PlayersPage = () => {
   const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
   const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>(players);
+  const [playersInWatch, setPlayersInWatch] = useState<IPlayer[]>([]); // TODO: should be saved in backend
   const [teamName, setTeamName] = useState('');
+  const [weeklyGames, setWeeklyGames] = useState(0);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -130,9 +67,19 @@ const PlayersPage = () => {
     return Array.from(teamsSet);
   }, [players]);
 
+  const memoWeeklyGames = useMemo(
+    () =>
+      Array.from(
+        players.reduce<Set<number>>((acc, player) => {
+          return acc.add(player.weeklyGames);
+        }, new Set<number>())
+      ),
+    []
+  );
+
   useEffect(() => {
     filterPlayers();
-  }, [positionsFilters, teamName]);
+  }, [positionsFilters, teamName, weeklyGames]);
 
   const filterPlayers = () => {
     let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
@@ -143,6 +90,10 @@ const PlayersPage = () => {
 
     if (teamName !== '') {
       newFilteredArray = newFilteredArray.filter((player) => player.teamName === teamName);
+    }
+
+    if (weeklyGames > 0) {
+      newFilteredArray = newFilteredArray.filter((player) => player.weeklyGames === weeklyGames);
     }
 
     setFilteredPlayers(newFilteredArray);
@@ -165,7 +116,7 @@ const PlayersPage = () => {
         <PlayersPositionsFilter onChange={handlePositionCheck} selectedPositions={positionsFilters} />
         <div className="players-filters-select">
           <SelectInput label="Teams" items={memoTeams} onChange={(e) => setTeamName((e.target as HTMLInputElement).value)} />
-          <SelectInput label="Weekly Games" />
+          <SelectInput label="Weekly Games" items={memoWeeklyGames} onChange={(e) => setWeeklyGames(parseInt((e.target as HTMLInputElement).value))} />
           <SelectInput label="Available" />
           <SelectInput label="Healthy" />
         </div>

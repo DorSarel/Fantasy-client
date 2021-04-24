@@ -7,6 +7,9 @@ import CardsSlider from '../common/Slider';
 import PlayersTable from '../common/PlayersTable';
 import { IPlayer } from '../../models/Player/PlayerModels';
 
+// Mock Data
+import teams from '../../mocks/teams.json';
+
 const headers = [
   {
     key: 'Player',
@@ -45,74 +48,8 @@ const headers = [
   },
 ];
 
-const players: IPlayer[] = [
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 1,
-    teamName: 'Wizards',
-    weeklyGames: 3,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'SG',
-        jersey: 6,
-      },
-    },
-  },
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 2,
-    teamName: 'Los Angels Lakers',
-    weeklyGames: 3,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'PF',
-        jersey: 12,
-      },
-    },
-  },
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 3,
-    teamName: 'Los Angels Lakers',
-    weeklyGames: 3,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'SF',
-        jersey: 12,
-      },
-    },
-  },
-  {
-    firstName: 'Dor',
-    lastName: 'Sarel',
-    playerId: 4,
-    teamName: 'Portland',
-    weeklyGames: 5,
-    teamId: 23,
-    heightInMeters: 1.72,
-    leagues: {
-      standard: {
-        active: 'true',
-        pos: 'C',
-        jersey: 9,
-      },
-    },
-  },
-];
-
 const MyTeam = () => {
+  const myTeam = teams[0]; // TODO - this is mock data
   return (
     <>
       <div className="left-column articles">
@@ -127,19 +64,21 @@ const MyTeam = () => {
       <div className="middle-column main-div">
         <img className="hoopers" src={hoopers} />
         <div className="main-div-text">
-          <p>Team Hoopers</p>
-          <p>Israeli team</p>
-          <p>League name 20/21</p>
+          <p>{myTeam.name}</p>
+          <p>Dor Sarel</p>
+          <p>{myTeam.league_name} 20/21</p>
           <div className="left-text">
             <img src={Medal} />
             <p>2nd</p>
-            <span>7-3-0</span>
+            <span>
+              {myTeam.stats.games_won}-{myTeam.stats.games_lost}
+            </span>
           </div>
         </div>
         <div className="slider-main">
           <CardsSlider />
         </div>
-        <PlayersTable headers={headers} players={players} />
+        <PlayersTable headers={headers} players={myTeam.players} />
       </div>
 
       <div className="right-column weekly-recap">

@@ -12,10 +12,11 @@ export interface IPlayerResponse {
   leagues: {
     standard: {
       jersey?: number;
-      active: string;
+      active: boolean;
       pos: string;
     };
   };
+  img_url?: string;
 }
 
 export interface IPlayer extends IPlayerResponse {
