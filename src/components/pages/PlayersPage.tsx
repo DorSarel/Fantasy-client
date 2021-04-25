@@ -8,6 +8,7 @@ import PlayersTable from '../common/PlayersTable';
 
 // Mock Data
 import players from '../../mocks/freePlayers.json';
+import { useFetchPlayers } from '../../hooks/useFetchPlayers';
 
 const headers = [
   {
@@ -55,9 +56,9 @@ const PlayersPage = () => {
   const [weeklyGames, setWeeklyGames] = useState(0);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(PlayerActions.fetchPlayers());
-  // }, []);
+  const { data, isLoading } = useFetchPlayers();
+
+  console.log('players', data);
 
   const memoTeams = useMemo(() => {
     const teamsSet = players.reduce<Set<string>>((acc, player) => {

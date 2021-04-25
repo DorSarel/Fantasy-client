@@ -14,7 +14,7 @@
             "jersey": 5
           }
         },
-        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630173.png"
+        "imagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630173.png"
       },
       {
         "firstName": "LaMarcus",
@@ -31,7 +31,7 @@
             "jersey": 21
           }
         },
-        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/200746.png"
+        "imagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/200746.png"
       },
       {
         "firstName": "Giannis",
@@ -48,7 +48,7 @@
             "jersey": 34
           }
         },
-        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png"
+        "imagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png"
       },
       {
         "firstName": "Bradley",
@@ -65,7 +65,7 @@
             "jersey": 3
           }
         },
-        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/203078.png"
+        "imagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/203078.png"
       },
       {
         "firstName": "Jeff",
@@ -82,6 +82,6 @@
             "jersey": 5
           }
         },
-        "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/201952.png"
+        "imagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/201952.png"
       }
 ]
