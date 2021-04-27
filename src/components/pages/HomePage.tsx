@@ -10,7 +10,7 @@ import { GlobalPaths } from '../common/GlobalPath';
 import useGoogleAuth from '../../hooks/useGoogleAuth';
 
 const HomePage = () => {
-  const loginButton = useGoogleAuth();
+  // const loginButton = useGoogleAuth();
   return (
     <>
       <div className="middle-column">
@@ -23,7 +23,7 @@ const HomePage = () => {
         <div className="create-join-btn">
           <Link to={GlobalPaths.createLeagueUrl}>Create a League</Link>
           <Link to="">Join a League</Link>
-          {loginButton}
+          {/* {loginButton} */}
         </div>
       </div>
       <div className="left-boxes left-column">

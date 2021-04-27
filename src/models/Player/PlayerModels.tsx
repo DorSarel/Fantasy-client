@@ -16,7 +16,7 @@ export interface IPlayerResponse {
       pos: string;
     };
   };
-  imagePath: string;
+  ImagePath: string;
 }
 
 export interface IPlayer extends IPlayerResponse {
