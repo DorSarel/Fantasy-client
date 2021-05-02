@@ -13,10 +13,11 @@ const ListViewComponent:React.FC<Props> = ({header, label1, label2, label3}) => 
     return (
         <div className="global-list">
            <ul className="list">
-               <li>{header}</li>
-               <li>{label1}</li>
-               <li>{label2}</li>
-               <li style={{borderRadius:"1rem"}}>{label3}</li>
+               <p>{header}</p>
+               <hr/>
+               <li ><hr style={{marginTop:"8rem"}}/>{label1}</li>
+               <li ><hr style={{marginTop:"8rem"}}/>{label2}</li>
+                {label3}
            </ul>
         </div>
     );
