@@ -83,6 +83,7 @@ const MyTeam = () => {
 
       <div className="right-column weekly-recap">
         <span>Weekly recap: </span>
+        <hr/>
         <p className="border"></p>
         <div className="twitter-box">
           <MediaBox />
