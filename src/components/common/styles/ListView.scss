@@ -1,27 +1,18 @@
 .global-list{
-  @include use-basic-page-setup;
+    background-color: white;
 margin-top: 2.8rem;
 width: 28rem;
-height: 19.8rem;
+height: 30rem;
 border: 1px solid #898989;
-box-sizing: border-box;
 border-radius: 1rem;
-padding: 0 !important;
+p{
+padding: 1rem;
+}
 }
 
   .list li {
     list-style: none;
-    border-bottom: 1px solid black;
-    padding: 2.1rem;
   }
-  
-  .list li:hover {
-    background-color: #f0f0f0;
-    -webkit-transition: all 0.2s;
-    -moz-transition:    all 0.2s;
-    -ms-transition:     all 0.2s;
-    -o-transition:      all 0.2s;
 
-  }
 
 

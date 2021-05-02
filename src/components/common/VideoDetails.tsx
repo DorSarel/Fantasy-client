@@ -7,7 +7,9 @@ interface Props {
 const VideoDetails: React.FC<Props> = ( {video} ) => {
     
     if (!video) {
-        return <p style={{marginLeft:"2rem"}}>Loading...</p>
+        return   <div className="o-media__figure">
+        <span className="skeleton-box"></span>
+      </div>
     }
     const videoSrc = `http://www.youtube.com/embed/${video.id.videoId}?rel=0&amp;autoplay=1&mute=1`;
     return (
