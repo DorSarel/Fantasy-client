@@ -41,7 +41,7 @@
                     "jersey": 9
                   }
                 },
-                "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630166.png"
+                "ImagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630166.png"
             },
             {
                 "firstName": "LaMelo",
@@ -58,7 +58,7 @@
                     "jersey": 2
                   }
                 },
-                "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630163.png"
+                "ImagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630163.png"
             },
             {
                 "firstName": "Will",
@@ -75,7 +75,7 @@
                     "jersey": 5
                   }
                 },
-                "img_url": "https://cdn.nba.com/headshots/nba/latest/1040x760/203115.png"
+                "ImagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/203115.png"
             }
         ]
     }

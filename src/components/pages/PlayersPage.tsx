@@ -8,6 +8,7 @@ import PlayersTable from '../common/PlayersTable';
 
 // Mock Data
 import players from '../../mocks/freePlayers.json';
+import { useFetchPlayers } from '../../hooks/useFetchPlayers';
 
 const headers = [
   {
@@ -49,17 +50,22 @@ const headers = [
 
 const PlayersPage = () => {
   const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
-  const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>(players);
+  const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>([]);
   const [playersInWatch, setPlayersInWatch] = useState<IPlayer[]>([]); // TODO: should be saved in backend
   const [teamName, setTeamName] = useState('');
   const [weeklyGames, setWeeklyGames] = useState(0);
-  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(PlayerActions.fetchPlayers());
-  // }, []);
+  const { data, isLoading } = useFetchPlayers();
+  const players = data?.slice(0, 20) ?? [];
+
+  useEffect(() => {
+    if (!isLoading) {
+      setFilteredPlayers(players);
+    }
+  }, [isLoading]);
 
   const memoTeams = useMemo(() => {
+    if (!players) return [];
     const teamsSet = players.reduce<Set<string>>((acc, player) => {
       return acc.add(player.teamName);
     }, new Set<string>());
@@ -67,15 +73,14 @@ const PlayersPage = () => {
     return Array.from(teamsSet);
   }, [players]);
 
-  const memoWeeklyGames = useMemo(
-    () =>
-      Array.from(
-        players.reduce<Set<number>>((acc, player) => {
-          return acc.add(player.weeklyGames);
-        }, new Set<number>())
-      ),
-    []
-  );
+  const memoWeeklyGames = useMemo(() => {
+    if (!players) return [];
+    Array.from(
+      players.reduce<Set<number>>((acc, player) => {
+        return acc.add(player.weeklyGames);
+      }, new Set<number>())
+    );
+  }, [players]);
 
   useEffect(() => {
     filterPlayers();

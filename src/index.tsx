@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './styles/index.scss';
 import App from './App';
 import { Provider } from 'react-redux';
@@ -15,13 +16,17 @@ const store = configureStore({
   middleware: [sagaMiddleware],
 });
 
+const queryClient = new QueryClient();
+
 sagaMiddleware.run(watcher);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
