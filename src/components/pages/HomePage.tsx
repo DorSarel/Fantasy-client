@@ -5,25 +5,22 @@ import instagram from '../../assets/images/instagram-icon.png';
 import youtube from '../../assets/images/youtube-icon.png';
 import GlobalList from '../common/ListView';
 import MediaBox from '../common/MediaBox';
-import { Link } from 'react-router-dom';
 import { GlobalPaths } from '../common/GlobalPath';
-import useGoogleAuth from '../../hooks/useGoogleAuth';
+import GuardLink from '../common/GuardLink';
 
 const HomePage = () => {
-  // const loginButton = useGoogleAuth();
   return (
     <>
       <div className="middle-column">
         <div className="welcome-main">
-          <img src={trophy} />
+          <img src={trophy} alt="trophy" />
           <h1>Welcome </h1>
           <p>to NBA Fantasy Pro</p>
         </div>
         <br />
         <div className="create-join-btn">
-          <Link to={GlobalPaths.createLeagueUrl}>Create a League</Link>
-          <Link to="">Join a League</Link>
-          {/* {loginButton} */}
+          <GuardLink to={GlobalPaths.createLeagueUrl}>Create a League</GuardLink>
+          <GuardLink to="">Join a League</GuardLink>
         </div>
       </div>
       <div className="left-boxes left-column">

@@ -1,72 +1,62 @@
-
 .welcome-main {
-    color: #051C2D;
-    margin-top: 5rem;
+  color: #051c2d;
+  margin-top: 5rem;
 }
-  
+
 img {
-    width: 10.6rem;
-    
-  }
-  .middle-column{
-      text-align: center;
-  }
+  width: 10.6rem;
+}
+.middle-column {
+  text-align: center;
+}
 
 h1 {
-    font-family: Roboto;
-    font-size: 6.4rem;
-    font-style: normal;
-    font-weight: 900;
-    line-height: 7.5rem;
+  font-family: Roboto;
+  font-size: 6.4rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 7.5rem;
 }
 
-p{
-    font-family: Roboto;
-    font-size: 2.2rem;
-    font-style: normal;
-    font-weight: 900;
-    // line-height: 2.9rem;
+p {
+  font-family: Roboto;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 900;
+  // line-height: 2.9rem;
 }
 
-.create-join-btn{
+.create-join-btn {
+  display: flex;
+  justify-content: space-between;
+  max-width: 40rem;
+  margin: 0 auto;
+
+  a {
+    width: 18.7rem;
+    height: 7.8rem;
+    background: #051c2d;
+    border: 0.1rem solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 500;
     display: flex;
-    justify-content: space-between;
-    max-width: 40rem;
-    margin: 0 auto;
-    a{
-       width: 18.7rem;
-       height: 7.8rem;
-       background: #051C2D;
-       border: 0.1rem solid #000000;
-       box-sizing: border-box;
-       box-shadow: 0px 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
-       border-radius: 1rem;
-       color: white;  
-       cursor: pointer;
-       text-decoration: none;
-       font-size: large;
-       font-weight: 500;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-    }
-
-    
-    a:nth-child(1){
-       @extend a;
-    }
-    
-    a:nth-child(2){
-       @extend a;
-    
-    }
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.right-boxes , .left-boxes {
-    margin-top: 3rem;
-    grid-row: 2;
+.right-boxes,
+.left-boxes {
+  margin-top: 3rem;
+  grid-row: 2;
 }
 
-h2{
-    margin-left: 13rem;
+h2 {
+  margin-left: 13rem;
 }
