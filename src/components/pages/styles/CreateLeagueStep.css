@@ -21,24 +21,27 @@
   display: inline-block;
 }
 
-.create-league-step .div2, .create-league-step .div3 {
+.create-league-step .div2,
+.create-league-step .div3 {
   margin-top: 2em;
   margin-right: 25rem;
 }
 
-.create-league-step .div2 .MuiSvgIcon-root, .create-league-step .div3 .MuiSvgIcon-root {
+.create-league-step .div2 .MuiSvgIcon-root,
+.create-league-step .div3 .MuiSvgIcon-root {
   float: left;
   width: 3rem;
 }
 
-.create-league-step .div2 .MuiFormGroup-root, .create-league-step .div3 .MuiFormGroup-root {
+.create-league-step .div2 .MuiFormGroup-root,
+.create-league-step .div3 .MuiFormGroup-root {
   display: inline;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .create-league-step .div2 {

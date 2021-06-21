@@ -1,0 +1,23 @@
+.league-invite {
+  font-size: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  &-tile {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
+
+    .tile-form {
+      display: flex;
+      flex-direction: column;
+
+      & > label {
+        text-align: left;
+      }
+    }
+  }
+}
