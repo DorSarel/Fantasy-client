@@ -1,5 +1,5 @@
 import React from 'react';
-import { Participant } from '../CreateLeaguePage';
+import { Participant } from '../../../models/League/LeagueModels';
 
 interface Props {
   participants: Participant[];

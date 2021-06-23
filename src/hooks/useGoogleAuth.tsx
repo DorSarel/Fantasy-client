@@ -10,10 +10,12 @@ const useGoogleAuth = (toPath: string) => {
   const history = useHistory();
 
   const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    const userBasicProfile = (res as GoogleLoginResponse).getBasicProfile();
     dispatch(
       UserActions.setUser({
         tokenId: (res as GoogleLoginResponse).getAuthResponse().id_token,
-        name: (res as GoogleLoginResponse).getBasicProfile().getName(),
+        name: userBasicProfile.getName(),
+        email: userBasicProfile.getEmail(),
       })
     );
 
@@ -22,6 +24,7 @@ const useGoogleAuth = (toPath: string) => {
 
   const onFailure = (res: any) => {
     console.log(res);
+    alert('Failed to login using google auth');
   };
 
   const { signIn } = useGoogleLogin({ onSuccess, onFailure, clientId });

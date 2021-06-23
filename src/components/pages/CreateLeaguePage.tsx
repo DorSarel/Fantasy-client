@@ -7,19 +7,22 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CreateLeagueStep from './CreateLeagueArea/CreateLeagueStep';
 import InviteParticipants from './CreateLeagueArea/InviteParticipants';
-
-export interface Participant {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
+import LeagueCreatorStep from './CreateLeagueArea/LeagueCreatorStep';
+import { LeagueCreator, Participant } from '../../models/League/LeagueModels';
 
 const CreateLeague = () => {
   const [leagueName, setLeagueName] = useState('');
   const [numOfTeams, setNumOfTeams] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [participants, setParticipants] = useState<Participant[]>([]);
-  const [isStepValid, setIsStepValid] = useState(false);
+  const [leagueCreator, setLeagueCreator] = useState<LeagueCreator>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    teamName: '',
+    nickName: '',
+    googleTokenId: '',
+  });
 
   const onLeagueNameChange = (event: any) => {
     setLeagueName(event.target.value);
@@ -59,6 +62,15 @@ const CreateLeague = () => {
     );
   };
 
+  const onCreatorChange = (e) => {
+    const { name, value } = e.target;
+
+    setLeagueCreator((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   function getSteps() {
     return ['Create League', 'Invite', 'My Team'];
   }
@@ -70,7 +82,7 @@ const CreateLeague = () => {
       case 1:
         return <InviteParticipants participants={participants} handleParticipantChange={onParticipantChange} />;
       case 2:
-        return <h1>Here...</h1>;
+        return <LeagueCreatorStep leagueCreator={leagueCreator} handleCreatorChange={onCreatorChange} />;
       default:
         return <h1>Done!</h1>;
     }
@@ -88,6 +100,29 @@ const CreateLeague = () => {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const handleCreateLeague = () => {
+    if (leagueName === '' || numOfTeams < 1) {
+      alert('League Name / Number of teams in invalid. Please fix');
+      return;
+    }
+
+    const isValidFirstNames = participants.filter((p) => p.firstName !== '').length === participants.length;
+    const isValidLastNames = participants.filter((p) => p.lastName !== '').length === participants.length;
+    const isValidEmails = participants.filter((p) => p.email !== '').length === participants.length;
+
+    if (!isValidFirstNames || !isValidLastNames || !isValidEmails) {
+      alert('Missing fields in invite step. Please fix');
+      return;
+    }
+
+    if (leagueCreator.firstName === '' || leagueCreator.lastName === '' || leagueCreator.email === '' || leagueCreator.teamName === '' || leagueCreator.nickName === '') {
+      alert('Missing fields in my team step. Please fix');
+      return;
+    }
+
+    // send data to server
   };
 
   return (
@@ -109,30 +144,25 @@ const CreateLeague = () => {
           </Step>
         </Stepper>
         <div>
-          {activeStep === steps.length ? (
+          <div>
+            <Typography variant="body1" component="span">
+              {getStepContent(activeStep)}
+            </Typography>
             <div>
-              <Typography variant="body1" component="h3">
-                Greate Job!
-              </Typography>
-              <Button size="large" onClick={handleReset}>
-                Reset
+              {activeStep === steps.length - 1 ? (
+                <Button variant="contained" color="primary" onClick={handleCreateLeague} size="large">
+                  Create League
+                </Button>
+              ) : (
+                <Button variant="contained" color="primary" onClick={handleNext} size="large">
+                  Next
+                </Button>
+              )}
+              <Button size="large" disabled={activeStep === 0} onClick={handleBack}>
+                Back
               </Button>
             </div>
-          ) : (
-            <div>
-              <Typography variant="body1" component="span">
-                {getStepContent(activeStep)}
-              </Typography>
-              <div>
-                <Button variant="contained" color="primary" onClick={handleNext} size="large">
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
-                <Button size="large" disabled={activeStep === 0} onClick={handleBack}>
-                  Back
-                </Button>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </>

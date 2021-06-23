@@ -5,6 +5,7 @@ const initialState: IUserStore = {
   user: {
     tokenId: '',
     name: '',
+    email: '',
   },
 };
 
@@ -13,9 +14,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, { payload }: PayloadAction<ISetUser>) => {
-      const { tokenId, name } = payload;
+      const { tokenId, name, email } = payload;
       state.user.tokenId = tokenId;
       state.user.name = name;
+      state.user.email = email;
     },
   },
 });
