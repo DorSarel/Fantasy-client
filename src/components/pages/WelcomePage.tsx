@@ -9,7 +9,7 @@ import { GlobalPaths } from '../common/GlobalPath';
 import GuardLink from '../common/GuardLink';
 import VideoDetails from '../common/VideoDetails';
 
-const HomePage = () => {
+const WelcomePage = () => {
   const [video, setVideo] = useState();
 
   useEffect(() => {
@@ -61,4 +61,4 @@ const HomePage = () => {
     </>
   );
 };
-export default HomePage;
+export default WelcomePage;
