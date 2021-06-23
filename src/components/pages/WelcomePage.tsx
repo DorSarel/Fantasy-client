@@ -26,7 +26,8 @@ const WelcomePage = () => {
           q: term,
         },
       });
-      const searchedVideo = response.data.items[0];
+      const videos = response.data.items;
+      const searchedVideo = videos[Math.floor(Math.random() * videos.length)];
       return searchedVideo;
     } catch (error) {
       console.log(error.message);

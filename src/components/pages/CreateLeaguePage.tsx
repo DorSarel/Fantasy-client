@@ -8,7 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import CreateLeagueStep from './CreateLeagueArea/CreateLeagueStep';
 import InviteParticipants from './CreateLeagueArea/InviteParticipants';
 import LeagueCreatorStep from './CreateLeagueArea/LeagueCreatorStep';
-import { LeagueCreator, Participant } from '../../models/League/LeagueModels';
+import { ICreateLeagueRequest, LeagueCreator, Participant } from '../../models/League/LeagueModels';
+import { useCreateLeague } from '../../hooks/useCreateLeague';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
 
 const CreateLeague = () => {
   const [leagueName, setLeagueName] = useState('');
@@ -23,6 +26,8 @@ const CreateLeague = () => {
     nickName: '',
     googleTokenId: '',
   });
+  const { createLeague } = useCreateLeague();
+  const user = useSelector((store: RootState) => store.user.user);
 
   const onLeagueNameChange = (event: any) => {
     setLeagueName(event.target.value);
@@ -123,6 +128,17 @@ const CreateLeague = () => {
     }
 
     // send data to server
+    const request: ICreateLeagueRequest = {
+      leagueName,
+      numberOfTeams: numOfTeams,
+      participants,
+      leagueCreator: {
+        ...leagueCreator,
+        googleTokenId: user.id,
+      },
+    };
+
+    createLeague(request);
   };
 
   return (

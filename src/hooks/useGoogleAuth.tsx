@@ -13,6 +13,7 @@ const useGoogleAuth = (toPath: string) => {
     const userBasicProfile = (res as GoogleLoginResponse).getBasicProfile();
     dispatch(
       UserActions.setUser({
+        id: userBasicProfile.getId(),
         tokenId: (res as GoogleLoginResponse).getAuthResponse().id_token,
         name: userBasicProfile.getName(),
         email: userBasicProfile.getEmail(),
