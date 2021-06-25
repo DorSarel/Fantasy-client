@@ -2,7 +2,7 @@ import { RequestOptions } from 'https';
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://localhost:44347/api/v1/',
+  baseURL: 'https://localhost:44395/api/v1/',
 });
 
 export class HttpClient {

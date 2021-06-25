@@ -103,9 +103,20 @@ const CreateLeague = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  //   setLeagueName('');
+  //   setNumOfTeams(0);
+  //   setParticipants([]);
+  //   setLeagueCreator({
+  //     firstName: '',
+  //     lastName: '',
+  //     email: '',
+  //     teamName: '',
+  //     nickName: '',
+  //     googleTokenId: '',
+  //   });
+  // };
 
   const handleCreateLeague = () => {
     if (leagueName === '' || numOfTeams < 1) {
@@ -139,6 +150,7 @@ const CreateLeague = () => {
     };
 
     createLeague(request);
+    //handleReset();
   };
 
   return (
