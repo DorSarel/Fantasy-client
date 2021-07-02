@@ -14,6 +14,7 @@ const InviteParticipants: React.FC<Props> = ({ participants, handleParticipantCh
         return (
           <div key={idx} className="league-invite-tile">
             <TextField
+              inputProps={{ style: { fontSize: '1.5rem' } }}
               autoComplete="off"
               size="medium"
               label="First Name"
@@ -23,6 +24,7 @@ const InviteParticipants: React.FC<Props> = ({ participants, handleParticipantCh
               variant="outlined"
             />
             <TextField
+              inputProps={{ style: { fontSize: '1.5rem' } }}
               autoComplete="off"
               size="medium"
               label="Last Name"
@@ -31,7 +33,16 @@ const InviteParticipants: React.FC<Props> = ({ participants, handleParticipantCh
               onChange={(e) => handleParticipantChange(idx, e)}
               variant="outlined"
             />
-            <TextField autoComplete="off" size="medium" label="Email" name="email" value={participant.email} onChange={(e) => handleParticipantChange(idx, e)} variant="outlined" />
+            <TextField
+              inputProps={{ style: { fontSize: '1.5rem' } }}
+              autoComplete="off"
+              size="medium"
+              label="Email"
+              name="email"
+              value={participant.email}
+              onChange={(e) => handleParticipantChange(idx, e)}
+              variant="outlined"
+            />
           </div>
         );
       })}

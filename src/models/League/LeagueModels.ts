@@ -16,3 +16,5 @@ export interface LeagueCreator extends Participant {
   teamName: string;
   nickName: string;
 }
+
+export type JoinLeagueRequest = LeagueCreator;
