@@ -7,6 +7,7 @@ import { GlobalPaths } from './components/common/GlobalPath';
 import CreateLeague from './components/pages/CreateLeaguePage';
 import MyTeam from './components/pages/MyTeamPage';
 import GuardRoute from './components/common/GuardRoute';
+import LoginPage from './components/pages/LoginPage';
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <GuardRoute path={GlobalPaths.myTeamUrl} exact={true} component={MyTeam} />
         <GuardRoute path={GlobalPaths.playersUrl} exact={true} component={PlayersPage} />
         <GuardRoute path={GlobalPaths.createLeagueUrl} exact={true} component={CreateLeague} />
+        <GuardRoute path={`${GlobalPaths.joinLeagueIrl}/:leagueId`} exact={true} component={CreateLeague} />
+        <Route path="/login" exact={true} component={LoginPage} />
       </Router>
     </div>
   );

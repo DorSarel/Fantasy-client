@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import trophy from '../../assets/images/trophy 1.png';
-import twitter from '../../assets/images/twitter-icon.png';
-import instagram from '../../assets/images/instagram-icon.png';
+// import twitter from '../../assets/images/twitter-icon.png';
+// import instagram from '../../assets/images/instagram-icon.png';
 import youtube from '../../sagas/apis/youtubeApi';
 import GlobalList from '../common/ListView';
 import MediaBox from '../common/MediaBox';

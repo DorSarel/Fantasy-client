@@ -4,21 +4,15 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import './styles/index.scss';
 import App from './App';
 import { Provider } from 'react-redux';
-import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './redux';
-import { watcher } from './sagas';
-
-const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [sagaMiddleware],
+  middleware: [],
 });
 
 const queryClient = new QueryClient();
-
-sagaMiddleware.run(watcher);
 
 ReactDOM.render(
   <React.StrictMode>
