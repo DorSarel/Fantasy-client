@@ -17,4 +17,6 @@ export interface LeagueCreator extends Participant {
   nickName: string;
 }
 
-export type JoinLeagueRequest = LeagueCreator;
+export interface JoinLeagueRequest extends LeagueCreator {
+  leagueId: string;
+}

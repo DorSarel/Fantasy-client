@@ -36,6 +36,7 @@ const JoinLeaguePage = () => {
     const request: JoinLeagueRequest = {
       ...member,
       googleTokenId: user.tokenId,
+      leagueId,
     };
 
     // TODO: add mutation to update server
