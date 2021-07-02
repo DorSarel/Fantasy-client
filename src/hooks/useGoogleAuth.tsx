@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { GlobalPaths } from '../components/common/GlobalPath';
 import * as UserActions from '../redux/userSlice';
 
 const useGoogleAuth = (toPath: string) => {
@@ -11,10 +12,12 @@ const useGoogleAuth = (toPath: string) => {
 
   const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     const userBasicProfile = (res as GoogleLoginResponse).getBasicProfile();
+
+    //TODO: send request to server to verify if user exist
+
     dispatch(
       UserActions.setUser({
         id: userBasicProfile.getId(),
-        tokenId: (res as GoogleLoginResponse).getAuthResponse().id_token,
         name: userBasicProfile.getName(),
         email: userBasicProfile.getEmail(),
       })
@@ -26,6 +29,7 @@ const useGoogleAuth = (toPath: string) => {
   const onFailure = (res: any) => {
     console.log(res);
     alert('Failed to login using google auth');
+    history.push(GlobalPaths.welcomeUrl);
   };
 
   const { signIn } = useGoogleLogin({ onSuccess, onFailure, clientId });

@@ -130,7 +130,7 @@ const CreateLeague = () => {
       participants,
       leagueCreator: {
         ...leagueCreator,
-        googleTokenId: user.id,
+        googleTokenId: user.userId,
       },
     };
 

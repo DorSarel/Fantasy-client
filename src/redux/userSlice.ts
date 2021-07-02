@@ -3,8 +3,8 @@ import { ISetUser, IUserStore } from '../models/User/UserModels';
 
 const initialState: IUserStore = {
   user: {
-    id: '',
-    tokenId: '',
+    userId: '',
+    googleId: '',
     name: '',
     email: '',
   },
@@ -15,9 +15,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, { payload }: PayloadAction<ISetUser>) => {
-      const { id, tokenId, name, email } = payload;
-      state.user.id = id;
-      state.user.tokenId = tokenId;
+      const { id, name, email } = payload;
+      state.user.googleId = id;
       state.user.name = name;
       state.user.email = email;
     },

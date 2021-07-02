@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import { JoinLeagueRequest } from '../../models/League/LeagueModels';
 import { RootState } from '../../redux';
+import { IsGoogleLoggedIn } from '../../utils/helpers';
 import { GlobalPaths } from '../common/GlobalPath';
 
 const initialState = {
@@ -18,7 +19,7 @@ const JoinLeaguePage = () => {
   const { leagueId } = useParams<{ leagueId: string }>();
   const [member, setMember] = useState(initialState);
   const user = useSelector((store: RootState) => store.user.user);
-  const isLoggedIn = user.tokenId !== '';
+  const isLoggedIn = IsGoogleLoggedIn(user);
   const leagueName = 'Salmon';
 
   // TODO: send query to get data about the league
@@ -35,7 +36,7 @@ const JoinLeaguePage = () => {
   const onJoinLeague = () => {
     const request: JoinLeagueRequest = {
       ...member,
-      googleTokenId: user.tokenId,
+      googleTokenId: user.googleId,
       leagueId,
     };
 

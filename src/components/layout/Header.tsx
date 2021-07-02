@@ -2,12 +2,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../redux';
+import { IsGoogleLoggedIn, IsUserLoggedIn } from '../../utils/helpers';
 import { GlobalPaths } from '../common/GlobalPath';
 import GuardLink from '../common/GuardLink';
 
 const Header = () => {
   const user = useSelector((store: RootState) => store.user.user);
-  const isLoggedIn = user.tokenId !== '';
+  const isFirstLoggedIn = IsGoogleLoggedIn(user);
+  const isLoggedIn = IsUserLoggedIn(user);
 
   return (
     <header className="header full-site-column">
@@ -17,11 +19,11 @@ const Header = () => {
 
       <nav className="header-nav">
         <ul>
-          {!isLoggedIn ? (
+          {!isFirstLoggedIn ? (
             <li className="header-nav-item">
               <GuardLink to={GlobalPaths.myTeamUrl}>Login</GuardLink>
             </li>
-          ) : (
+          ) : isLoggedIn ? (
             <>
               <li className="header-nav-item">
                 <Link to={GlobalPaths.welcomeUrl}>Home</Link>
@@ -36,7 +38,7 @@ const Header = () => {
                 <GuardLink to={GlobalPaths.playersUrl}>Players</GuardLink>
               </li>
             </>
-          )}
+          ) : null}
         </ul>
       </nav>
     </header>
