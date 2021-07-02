@@ -62,13 +62,13 @@ const MyTeam = () => {
         </div>
       </div>
       <div className="middle-column main-div">
-        <img className="hoopers" src={hoopers} />
+        <img className="hoopers" src={hoopers} alt="hoopers" />
         <div className="main-div-text">
           <p>{myTeam.name}</p>
           <p>Dor Sarel</p>
           <p>{myTeam.league_name} 20/21</p>
           <div className="left-text">
-            <img src={Medal} />
+            <img src={Medal} alt="Medal" />
             <p>2nd</p>
             <span>
               {myTeam.stats.games_won}-{myTeam.stats.games_lost}
@@ -83,7 +83,7 @@ const MyTeam = () => {
 
       <div className="right-column weekly-recap">
         <span>Weekly recap: </span>
-        <hr/>
+        <hr />
         <p className="border"></p>
         <div className="twitter-box">
           <MediaBox />
