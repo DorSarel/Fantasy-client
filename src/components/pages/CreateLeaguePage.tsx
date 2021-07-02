@@ -103,21 +103,6 @@ const CreateLeague = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  // const handleReset = () => {
-  //   setActiveStep(0);
-  //   setLeagueName('');
-  //   setNumOfTeams(0);
-  //   setParticipants([]);
-  //   setLeagueCreator({
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     teamName: '',
-  //     nickName: '',
-  //     googleTokenId: '',
-  //   });
-  // };
-
   const handleCreateLeague = () => {
     if (leagueName === '' || numOfTeams < 1) {
       alert('League Name / Number of teams in invalid. Please fix');
@@ -150,7 +135,6 @@ const CreateLeague = () => {
     };
 
     createLeague(request);
-    //handleReset();
   };
 
   return (
@@ -165,10 +149,10 @@ const CreateLeague = () => {
             <StepLabel>Create League</StepLabel>
           </Step>
           <Step>
-            <StepLabel>invite</StepLabel>
+            <StepLabel>Invite</StepLabel>
           </Step>
           <Step>
-            <StepLabel>my Team</StepLabel>
+            <StepLabel>My Team</StepLabel>
           </Step>
         </Stepper>
         <div>

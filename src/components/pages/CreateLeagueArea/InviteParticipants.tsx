@@ -1,3 +1,4 @@
+import { TextField } from '@material-ui/core';
 import React from 'react';
 import { Participant } from '../../../models/League/LeagueModels';
 
@@ -12,18 +13,25 @@ const InviteParticipants: React.FC<Props> = ({ participants, handleParticipantCh
       {participants.map((participant, idx) => {
         return (
           <div key={idx} className="league-invite-tile">
-            <div className="tile-form">
-              <label>First Name:</label>
-              <input type="text" name="firstName" value={participant.firstName} onChange={(e) => handleParticipantChange(idx, e)} />
-            </div>
-            <div className="tile-form">
-              <label>Last Name:</label>
-              <input type="text" name="lastName" value={participant.lastName} onChange={(e) => handleParticipantChange(idx, e)} />
-            </div>
-            <div className="tile-form">
-              <label>Email:</label>
-              <input type="email" name="email" value={participant.email} onChange={(e) => handleParticipantChange(idx, e)} />
-            </div>
+            <TextField
+              autoComplete="off"
+              size="medium"
+              label="First Name"
+              name="firstName"
+              value={participant.firstName}
+              onChange={(e) => handleParticipantChange(idx, e)}
+              variant="outlined"
+            />
+            <TextField
+              autoComplete="off"
+              size="medium"
+              label="Last Name"
+              name="lastName"
+              value={participant.lastName}
+              onChange={(e) => handleParticipantChange(idx, e)}
+              variant="outlined"
+            />
+            <TextField autoComplete="off" size="medium" label="Email" name="email" value={participant.email} onChange={(e) => handleParticipantChange(idx, e)} variant="outlined" />
           </div>
         );
       })}
