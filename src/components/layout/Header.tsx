@@ -38,7 +38,13 @@ const Header = () => {
                 <GuardLink to={GlobalPaths.playersUrl}>Players</GuardLink>
               </li>
             </>
-          ) : null}
+          ) : (
+            <>
+              <li className="header-nav-item">
+                <GuardLink to={GlobalPaths.createLeagueUrl}>Create new league</GuardLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>

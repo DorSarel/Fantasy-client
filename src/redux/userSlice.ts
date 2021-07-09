@@ -7,6 +7,7 @@ const initialState: IUserStore = {
     googleId: '',
     name: '',
     email: '',
+    leagueId: '',
   },
 };
 

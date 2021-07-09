@@ -10,7 +10,7 @@ const useGoogleAuth = (toPath: string) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const onSuccess = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     const userBasicProfile = (res as GoogleLoginResponse).getBasicProfile();
 
     //TODO: send request to server to verify if user exist

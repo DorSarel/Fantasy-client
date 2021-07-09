@@ -13,4 +13,5 @@ export interface IUser {
   googleId: string;
   name: string;
   email: string;
+  leagueId: string;
 }
