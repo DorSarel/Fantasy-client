@@ -20,6 +20,8 @@ const CreateLeagueStep: React.FC<Props> = ({ leagueName, numOfTeams, handleNameC
         <div className="div2">
           <h3>Number Of Teams</h3>
           <RadioGroup aria-label="team" name="team" value={numOfTeams} onChange={handleNumOfTeamChange}>
+            <Radio value={2} size="small" />
+            <label>2</label>
             <Radio value={8} size="small" />
             <label>8</label>
             <Radio value={10} size="small" />

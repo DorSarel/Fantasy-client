@@ -20,3 +20,10 @@ export interface LeagueCreator extends Participant {
 export interface JoinLeagueRequest extends LeagueCreator {
   leagueId: string;
 }
+
+export interface ILeagueInfo {
+  leagueNumber: number;
+  leagueName: string;
+  leagueCreator: string;
+  isExistFreePlace: boolean;
+}

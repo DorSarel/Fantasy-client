@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 export class HttpClient {
-  public static async get(endpoint: string, options?: RequestOptions, params?: any) {
+  public static async get(endpoint: string, options?: RequestOptions | null, params?: any) {
     let axiosResponse: any;
     try {
       axiosResponse = await instance.get(endpoint, {
