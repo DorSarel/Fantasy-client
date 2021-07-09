@@ -1,8 +1,30 @@
-.jumbo {
-  background-color: #fff;
-  padding: 2rem;
-  margin: 0 auto;
-  margin-top: 2rem;
-  border-radius: 5px;
-  width: max-content;
+.join-league {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: 'title title' 'jumbo form';
+  gap: 3rem;
+
+  & > h1 {
+    grid-area: title;
+  }
+
+  .jumbo {
+    background-color: #fff;
+    padding: 2rem;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: max-content;
+    grid-area: jumbo;
+
+    img {
+      width: 20rem;
+      height: 13rem;
+      margin-top: 2rem;
+    }
+  }
+
+  &-form {
+    grid-area: form;
+  }
 }
