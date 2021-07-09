@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin } from 'react-google-login';
+import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin, useGoogleLogout } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { GlobalPaths } from '../components/common/GlobalPath';
@@ -32,9 +32,18 @@ const useGoogleAuth = (toPath: string) => {
     history.push(GlobalPaths.welcomeUrl);
   };
 
-  const { signIn } = useGoogleLogin({ onSuccess, onFailure, clientId });
+  const onLogoutSuccess = () => {
+    alert('Logged out successfully');
 
-  return { signIn };
+    dispatch(UserActions.logoutUser());
+
+    history.push(GlobalPaths.welcomeUrl);
+  };
+
+  const { signIn } = useGoogleLogin({ onSuccess, onFailure, clientId });
+  const { signOut } = useGoogleLogout({ clientId, onLogoutSuccess });
+
+  return { signIn, signOut };
 };
 
 export default useGoogleAuth;

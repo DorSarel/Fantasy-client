@@ -9,6 +9,7 @@ import { IsGoogleLoggedIn } from '../../utils/helpers';
 import { GlobalPaths } from '../common/GlobalPath';
 import { getLeagueInfo } from '../../sagas/apis/leagueApi';
 import Loader from '../common/Loader';
+import { useCreateLeague } from '../../hooks/useCreateLeague';
 
 const initialState = {
   firstName: '',
@@ -34,6 +35,8 @@ const JoinLeaguePage = () => {
   const { leagueId } = useParams<{ leagueId: string }>();
   const [member, setMember] = useState(initialState);
   const user = useSelector((store: RootState) => store.user.user);
+
+  const { joinLeague } = useCreateLeague();
   // const isLoggedIn = IsGoogleLoggedIn(user);
 
   const { data: leagueConfig, isLoading } = useQuery<ILeagueInfo>(
@@ -66,8 +69,7 @@ const JoinLeaguePage = () => {
       leagueId,
     };
 
-    console.log(request);
-    // TODO: add mutation to update server
+    joinLeague(request);
   };
 
   if (isLoading) return <Loader />;

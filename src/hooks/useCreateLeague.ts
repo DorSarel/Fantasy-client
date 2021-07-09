@@ -1,11 +1,12 @@
 import { useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import { GlobalPaths } from '../components/common/GlobalPath';
-import { ICreateLeagueRequest } from '../models/League/LeagueModels';
-import { createLeagueAsync } from '../sagas/apis/leagueApi';
+import { ICreateLeagueRequest, JoinLeagueRequest } from '../models/League/LeagueModels';
+import { createLeagueAsync, joinLeagueAsync } from '../sagas/apis/leagueApi';
 
 export const useCreateLeague = () => {
   const history = useHistory();
+
   const { mutate: createLeague } = useMutation(
     (request: ICreateLeagueRequest) => {
       return createLeagueAsync(request);
@@ -26,7 +27,27 @@ export const useCreateLeague = () => {
     }
   );
 
+  const { mutate: joinLeague } = useMutation(
+    (request: JoinLeagueRequest) => {
+      return joinLeagueAsync(request);
+    },
+    {
+      onSuccess: (data, request: JoinLeagueRequest) => {
+        console.log(`Joined league successfully`);
+        alert('Joining was successfull. Redirecting in 1 seconds');
+
+        setTimeout(() => {
+          history.push(GlobalPaths.myTeamUrl);
+        }, 2000);
+      },
+      onError: (error) => {
+        console.log('faled to join league');
+      },
+    }
+  );
+
   return {
     createLeague,
+    joinLeague,
   };
 };
