@@ -23,7 +23,7 @@ const Header = () => {
         <ul>
           {authLevel === AUTH_LEVEL.AUTH_NONE ? (
             <li className="header-nav-item">
-              <GuardLink to={GlobalPaths.myTeamUrl}>Login</GuardLink>
+              <GuardLink to={GlobalPaths.welcomeUrl}>Login</GuardLink>
             </li>
           ) : authLevel === AUTH_LEVEL.AUTH_FULL ? (
             <>
@@ -38,6 +38,11 @@ const Header = () => {
               </li>
               <li className="header-nav-item">
                 <GuardLink to={GlobalPaths.playersUrl}>Players</GuardLink>
+              </li>
+              <li className="header-nav-item">
+                <a href="#" onClick={signOut}>
+                  Logout
+                </a>
               </li>
             </>
           ) : (

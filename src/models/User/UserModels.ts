@@ -2,10 +2,15 @@ export interface IUserStore {
   user: IUser;
 }
 
-export interface ISetUser {
-  id: string;
+export interface ISetGoogleUser {
+  googleId: string;
   name: string;
   email: string;
+}
+
+export interface ISetUser extends ISetGoogleUser {
+  userId: string;
+  leagueId: string;
 }
 
 export interface IUser {
@@ -13,6 +18,12 @@ export interface IUser {
   googleId: string;
   name: string;
   email: string;
+  leagueId: string;
+}
+
+export interface IUserInfo {
+  userId: string;
+  googleTokenId: string;
   leagueId: string;
 }
 

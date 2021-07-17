@@ -1,7 +1,5 @@
 import { HttpClient } from '../../services/httpClient';
 
-const getUser = async (googleId: string) => {
-  // // Imp request
-  // setTimeout(() => {
-  // }, 2000);
+export const getUser = async (googleId: string) => {
+  return await HttpClient.post('/users/GetUserDetails', { googleId });
 };

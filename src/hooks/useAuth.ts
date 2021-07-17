@@ -1,0 +1,57 @@
+import { GoogleLoginResponse } from 'react-google-login';
+import { useMutation } from 'react-query';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { getUser } from '../sagas/apis/userApi';
+import * as UserActions from '../redux/userSlice';
+// import { IUserInfo } from '../models/User/UserModels';
+
+export const useAuth = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { mutate: serverLogin } = useMutation(
+    (request: { googleResp: GoogleLoginResponse; redirectPath: string }) => {
+      const googleId = request.googleResp.getBasicProfile().getId();
+      return getUser(googleId);
+    },
+    {
+      onSuccess: (data, request: { googleResp: GoogleLoginResponse; redirectPath: string }) => {
+        const { googleResp, redirectPath } = request;
+        const userBasicProfile = googleResp.getBasicProfile();
+
+        console.log('data', data.data);
+
+        if (data.data) {
+          dispatch(
+            UserActions.setUser({
+              googleId: userBasicProfile.getId(),
+              name: userBasicProfile.getName(),
+              email: userBasicProfile.getEmail(),
+              userId: data.data.userId,
+              leagueId: data.data.leagueId,
+            })
+          );
+        } else {
+          dispatch(
+            UserActions.setGoogleUser({
+              googleId: userBasicProfile.getId(),
+              name: userBasicProfile.getName(),
+              email: userBasicProfile.getEmail(),
+            })
+          );
+        }
+
+        if (redirectPath) history.push(redirectPath);
+      },
+      onError: (error, request: { googleResp: GoogleLoginResponse; redirectPath: string }) => {
+        alert('Failed to get user details from server');
+        history.push('/');
+      },
+    }
+  );
+
+  return {
+    serverLogin,
+  };
+};
