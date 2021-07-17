@@ -12,6 +12,10 @@ import { ICreateLeagueRequest, LeagueCreator, Participant } from '../../models/L
 import { useCreateLeague } from '../../hooks/useCreateLeague';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
+import { GetAuthLevel } from '../../utils/helpers';
+import { AUTH_LEVEL } from '../../models/User/UserModels';
+import { Redirect } from 'react-router-dom';
+import { GlobalPaths } from '../common/GlobalPath';
 
 const CreateLeague = () => {
   const [leagueName, setLeagueName] = useState('');
@@ -28,6 +32,7 @@ const CreateLeague = () => {
   });
   const { createLeague } = useCreateLeague();
   const user = useSelector((store: RootState) => store.user.user);
+  const authLevel = GetAuthLevel(user);
 
   const onLeagueNameChange = (event: any) => {
     setLeagueName(event.target.value);
@@ -136,6 +141,8 @@ const CreateLeague = () => {
 
     createLeague(request);
   };
+
+  if (authLevel === AUTH_LEVEL.AUTH_FULL) return <Redirect to={GlobalPaths.myTeamUrl} />;
 
   return (
     <>
