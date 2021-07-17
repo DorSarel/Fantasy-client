@@ -2,8 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useGoogleAuth from '../../hooks/useGoogleAuth';
+import { AUTH_LEVEL } from '../../models/User/UserModels';
 import { RootState } from '../../redux';
-import { IsGoogleLoggedIn } from '../../utils/helpers';
+import { GetAuthLevel } from '../../utils/helpers';
 
 interface Props {
   to: string;
@@ -12,10 +13,10 @@ interface Props {
 
 const GuardLink = ({ to, children }: Props) => {
   const user = useSelector((store: RootState) => store.user.user);
-  let isLoggedIn = IsGoogleLoggedIn(user);
+  const authLevel = GetAuthLevel(user);
   const { signIn } = useGoogleAuth(to);
 
-  return isLoggedIn ? (
+  return authLevel >= AUTH_LEVEL.AUTH_PART ? (
     <Link to={to}>{children}</Link>
   ) : (
     <a href="#" onClick={signIn}>

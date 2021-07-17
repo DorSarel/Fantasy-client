@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import { ILeagueInfo, JoinLeagueRequest } from '../../models/League/LeagueModels';
 import { RootState } from '../../redux';
-import { IsGoogleLoggedIn } from '../../utils/helpers';
+import { GetAuthLevel } from '../../utils/helpers';
 import { GlobalPaths } from '../common/GlobalPath';
 import { getLeagueInfo } from '../../sagas/apis/leagueApi';
 import Loader from '../common/Loader';
 import { useCreateLeague } from '../../hooks/useCreateLeague';
+import { AUTH_LEVEL } from '../../models/User/UserModels';
 
 const initialState = {
   firstName: '',
@@ -37,7 +38,7 @@ const JoinLeaguePage = () => {
   const user = useSelector((store: RootState) => store.user.user);
 
   const { joinLeague } = useCreateLeague();
-  // const isLoggedIn = IsGoogleLoggedIn(user);
+  const authLevel = GetAuthLevel(user);
 
   const { data: leagueConfig, isLoading } = useQuery<ILeagueInfo>(
     ['leagus', leagueId],
@@ -74,7 +75,7 @@ const JoinLeaguePage = () => {
 
   if (isLoading) return <Loader />;
 
-  // if (isLoggedIn) <Redirect to={GlobalPaths.myTeamUrl} />;
+  if (authLevel === AUTH_LEVEL.AUTH_FULL) <Redirect to={GlobalPaths.myTeamUrl} />;
 
   return (
     leagueConfig && (

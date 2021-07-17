@@ -2,16 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useGoogleAuth from '../../hooks/useGoogleAuth';
+import { AUTH_LEVEL } from '../../models/User/UserModels';
 import { RootState } from '../../redux';
-import { IsGoogleLoggedIn, IsUserLoggedIn } from '../../utils/helpers';
+import { GetAuthLevel } from '../../utils/helpers';
 import { GlobalPaths } from '../common/GlobalPath';
 import GuardLink from '../common/GuardLink';
 
 const Header = () => {
   const user = useSelector((store: RootState) => store.user.user);
   const { signOut } = useGoogleAuth('');
-  const isFirstLoggedIn = IsGoogleLoggedIn(user);
-  const isLoggedIn = IsUserLoggedIn(user);
+  const authLevel = GetAuthLevel(user);
 
   return (
     <header className="header full-site-column">
@@ -21,11 +21,11 @@ const Header = () => {
 
       <nav className="header-nav">
         <ul>
-          {!isFirstLoggedIn ? (
+          {authLevel === AUTH_LEVEL.AUTH_NONE ? (
             <li className="header-nav-item">
               <GuardLink to={GlobalPaths.myTeamUrl}>Login</GuardLink>
             </li>
-          ) : isLoggedIn ? (
+          ) : authLevel === AUTH_LEVEL.AUTH_FULL ? (
             <>
               <li className="header-nav-item">
                 <Link to={GlobalPaths.welcomeUrl}>Home</Link>
