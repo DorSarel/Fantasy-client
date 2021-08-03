@@ -6,10 +6,11 @@ import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayersTable from '../common/PlayersTable';
 import { useFetchAllPlayers } from '../../hooks/useFetchPlayers';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import Loader from '../common/Loader';
 import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
 import { ILeagueInfo, LeagueStatus } from '../../models/League/LeagueModels';
+import { GlobalPaths } from '../common/GlobalPath';
 
 const headers = [
   {
@@ -53,12 +54,11 @@ const DraftPage = () => {
   const { leagueId } = useParams<{ leagueId: string }>();
   const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
   const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>([]);
-  const [playersInWatch, setPlayersInWatch] = useState<IPlayer[]>([]); // TODO: should be saved in backend
   const [teamName, setTeamName] = useState('');
   const [weeklyGames, setWeeklyGames] = useState(0);
 
   const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(leagueId);
-  const { data, isLoading } = useFetchAllPlayers(leagueId, leagueInfo.leagueStatus === LeagueStatus.Draft);
+  const { data, isLoading } = useFetchAllPlayers(leagueId, leagueInfo?.leagueStatus === LeagueStatus.Draft);
   const players = data?.slice(0, 20) ?? []; // TOOD: pagination - should be done from BE
 
   useEffect(() => {
@@ -116,12 +116,16 @@ const DraftPage = () => {
 
   if (isFetchingLeagueInfo) return <Loader />;
 
+  if (leagueInfo.leagueStatus === LeagueStatus.Ready) {
+    return <Redirect to={GlobalPaths.myTeamUrl} />;
+  }
+
   return (
     <>
       <div className="players-filters middle-column">
         <div className="players-filters-title">
-          <h1>Players Board</h1>
-          <span>Dor's league</span>
+          <h1>Draft Event</h1>
+          <span>{leagueInfo?.name ?? 'N/A'}</span>
         </div>
         <PlayersPositionsFilter onChange={handlePositionCheck} selectedPositions={positionsFilters} />
         <div className="players-filters-select">
@@ -132,7 +136,11 @@ const DraftPage = () => {
         </div>
       </div>
       <div className="players-main middle-column">
-        <PlayersTable headers={headers} players={filteredPlayers} />
+        {leagueInfo?.leagueStatus === LeagueStatus.Init ? (
+          <p>Waiting for other players to join the league before starting the draft event</p>
+        ) : (
+          <PlayersTable headers={headers} players={filteredPlayers} />
+        )}
       </div>
     </>
   );

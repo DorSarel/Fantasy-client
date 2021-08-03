@@ -22,8 +22,6 @@ const WelcomePage = () => {
   const authLevel = GetAuthLevel(user);
   const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(user.leagueId);
 
-  console.log('leagueInfo', leagueInfo);
-
   useEffect(() => {
     (async () => {
       const video = await onTermSubmit('NBA');
