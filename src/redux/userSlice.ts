@@ -8,6 +8,7 @@ const initialState: IUserStore = {
     name: '',
     email: '',
     leagueId: '',
+    isAdmin: false,
   },
 };
 

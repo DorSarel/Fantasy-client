@@ -6,9 +6,9 @@ export const createLeagueAsync = async (request: ICreateLeagueRequest) => {
 };
 
 export const getLeagueInfo = async (leagueId: string) => {
-  return await HttpClient.get('/leagues/get-league', null, { leagueId });
+  return await HttpClient.get('/leagues/info', null, { leagueId });
 };
 
 export const joinLeagueAsync = async (request: JoinLeagueRequest) => {
-  return await HttpClient.post('/leagues/join-league', request);
+  return await HttpClient.post('/leagues/join', request);
 };

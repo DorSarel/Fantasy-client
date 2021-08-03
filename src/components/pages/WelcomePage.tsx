@@ -13,17 +13,24 @@ import { RootState } from '../../redux';
 import { GetAuthLevel } from '../../utils/helpers';
 import { AUTH_LEVEL } from '../../models/User/UserModels';
 import { Redirect } from 'react-router-dom';
+import { ILeagueInfo, LeagueStatus } from '../../models/League/LeagueModels';
+import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
 
 const WelcomePage = () => {
   const [video, setVideo] = useState();
   const user = useSelector((store: RootState) => store.user.user);
   const authLevel = GetAuthLevel(user);
+  const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(user.leagueId);
+
+  console.log('leagueInfo', leagueInfo);
 
   useEffect(() => {
     (async () => {
       const video = await onTermSubmit('NBA');
       setVideo(video);
     })();
+
+    return () => setVideo(null);
   }, []);
 
   const onTermSubmit = async (term: string) => {
@@ -41,7 +48,8 @@ const WelcomePage = () => {
     }
   };
 
-  if (authLevel === AUTH_LEVEL.AUTH_FULL) return <Redirect to={GlobalPaths.myTeamUrl} />;
+  if (leagueInfo && leagueInfo.leagueStatus === LeagueStatus.Draft) return <Redirect to={`${GlobalPaths.draft}/${leagueInfo.leagueId}`} />;
+  // if (authLevel === AUTH_LEVEL.AUTH_FULL) return <Redirect to={GlobalPaths.myTeamUrl} />;
 
   return (
     <>

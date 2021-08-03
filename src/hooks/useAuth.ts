@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getUser } from '../sagas/apis/userApi';
 import * as UserActions from '../redux/userSlice';
+import * as LoadingActions from '../redux/loadingSlice';
 // import { IUserInfo } from '../models/User/UserModels';
 
 export const useAuth = () => {
@@ -19,8 +20,6 @@ export const useAuth = () => {
       onSuccess: (data, request: { googleResp: GoogleLoginResponse; redirectPath: string }) => {
         const { googleResp, redirectPath } = request;
         const userBasicProfile = googleResp.getBasicProfile();
-
-        console.log('data', data.data);
 
         if (data.data) {
           dispatch(
@@ -41,6 +40,8 @@ export const useAuth = () => {
             })
           );
         }
+
+        dispatch(LoadingActions.stopLoading());
 
         if (redirectPath) history.push(redirectPath);
       },

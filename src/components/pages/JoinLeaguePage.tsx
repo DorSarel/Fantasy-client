@@ -83,8 +83,8 @@ const JoinLeaguePage = () => {
         <Typography variant="h1">Join league</Typography>
         <div className="jumbo">
           <Typography variant="h2">Hello, {user.name}</Typography>
-          <p>{`${leagueConfig.leagueCreator} is inviting you to join his league`}</p>
-          <p>{`Join him now on ${leagueConfig.leagueName} league`}</p>
+          <p>{`${leagueConfig.creatorName} is inviting you to join his league`}</p>
+          <p>{`Join him now on ${leagueConfig.name} league`}</p>
           <img src="https://a.espncdn.com/photo/2020/0311/espn_fba_1296x729.jpg" alt="fantasy" />
         </div>
         <div className="league-invite-tile league-creator">

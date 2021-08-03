@@ -5,7 +5,7 @@ import PlayersPositionsFilter from '../PlayersPage/PlayersPositionsFilter';
 import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayersTable from '../common/PlayersTable';
-import { useFetchPlayers } from '../../hooks/useFetchPlayers';
+import { useFetchAllPlayers } from '../../hooks/useFetchPlayers';
 
 const headers = [
   {
@@ -52,54 +52,54 @@ const PlayersPage = () => {
   const [teamName, setTeamName] = useState('');
   const [weeklyGames, setWeeklyGames] = useState(0);
 
-  const { data, isLoading } = useFetchPlayers();
-  const players = data?.slice(0, 20) ?? []; // TOOD: pagination
+  // const { data, isLoading } = useFetchAllPlayers();
+  // const players = data?.slice(0, 20) ?? []; // TOOD: pagination
 
-  useEffect(() => {
-    if (!isLoading) {
-      setFilteredPlayers(players);
-    }
-  }, [isLoading]);
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     setFilteredPlayers(players);
+  //   }
+  // }, [isLoading]);
 
-  const memoTeams = useMemo(() => {
-    if (!players) return [];
-    const teamsSet = players.reduce<Set<string>>((acc, player) => {
-      return acc.add(player.teamName);
-    }, new Set<string>());
+  // const memoTeams = useMemo(() => {
+  //   if (!players) return [];
+  //   const teamsSet = players.reduce<Set<string>>((acc, player) => {
+  //     return acc.add(player.teamName);
+  //   }, new Set<string>());
 
-    return Array.from(teamsSet);
-  }, [players]);
+  //   return Array.from(teamsSet);
+  // }, [players]);
 
-  const memoWeeklyGames = useMemo(() => {
-    if (!players) return [];
-    Array.from(
-      players.reduce<Set<number>>((acc, player) => {
-        return acc.add(player.weeklyGames);
-      }, new Set<number>())
-    );
-  }, [players]);
+  // const memoWeeklyGames = useMemo(() => {
+  //   if (!players) return [];
+  //   Array.from(
+  //     players.reduce<Set<number>>((acc, player) => {
+  //       return acc.add(player.weeklyGames);
+  //     }, new Set<number>())
+  //   );
+  // }, [players]);
 
-  useEffect(() => {
-    filterPlayers();
-  }, [positionsFilters, teamName, weeklyGames]);
+  // useEffect(() => {
+  //   filterPlayers();
+  // }, [positionsFilters, teamName, weeklyGames]);
 
-  const filterPlayers = () => {
-    let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
+  // const filterPlayers = () => {
+  //   let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
 
-    if (positionsFilters.length > 0) {
-      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.leagues.standard.pos));
-    }
+  //   if (positionsFilters.length > 0) {
+  //     newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.leagues.standard.pos));
+  //   }
 
-    if (teamName !== '') {
-      newFilteredArray = newFilteredArray.filter((player) => player.teamName === teamName);
-    }
+  //   if (teamName !== '') {
+  //     newFilteredArray = newFilteredArray.filter((player) => player.teamName === teamName);
+  //   }
 
-    if (weeklyGames > 0) {
-      newFilteredArray = newFilteredArray.filter((player) => player.weeklyGames === weeklyGames);
-    }
+  //   if (weeklyGames > 0) {
+  //     newFilteredArray = newFilteredArray.filter((player) => player.weeklyGames === weeklyGames);
+  //   }
 
-    setFilteredPlayers(newFilteredArray);
-  };
+  //   setFilteredPlayers(newFilteredArray);
+  // };
 
   const handlePositionCheck = ({ checked, values }: { checked: boolean; values: string[] }) => {
     if (checked) setPositionsFilters((currentFilters) => [...currentFilters, ...values]);
@@ -117,8 +117,8 @@ const PlayersPage = () => {
         </div>
         <PlayersPositionsFilter onChange={handlePositionCheck} selectedPositions={positionsFilters} />
         <div className="players-filters-select">
-          <SelectInput label="Teams" items={memoTeams} onChange={(e) => setTeamName((e.target as HTMLInputElement).value)} />
-          <SelectInput label="Weekly Games" items={memoWeeklyGames} onChange={(e) => setWeeklyGames(parseInt((e.target as HTMLInputElement).value))} />
+          {/* <SelectInput label="Teams" items={memoTeams} onChange={(e) => setTeamName((e.target as HTMLInputElement).value)} /> */}
+          {/* <SelectInput label="Weekly Games" items={memoWeeklyGames} onChange={(e) => setWeeklyGames(parseInt((e.target as HTMLInputElement).value))} /> */}
           <SelectInput label="Available" />
           <SelectInput label="Healthy" />
         </div>

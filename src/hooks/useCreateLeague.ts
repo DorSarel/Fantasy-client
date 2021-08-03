@@ -12,13 +12,11 @@ export const useCreateLeague = () => {
       return createLeagueAsync(request);
     },
     {
-      onSuccess: (data, request: ICreateLeagueRequest) => {
+      onSuccess: ({ data: leagueId }, request: ICreateLeagueRequest) => {
         console.log('Created league successfully');
-        alert('League was created. Redirecting in 2 seconds');
+        alert('League was created');
 
-        setTimeout(() => {
-          history.push(GlobalPaths.myTeamUrl);
-        }, 2000);
+        history.push(`${GlobalPaths.draft}/${leagueId}`);
       },
       onError: (error, request: ICreateLeagueRequest) => {
         console.log('Failed to create league');

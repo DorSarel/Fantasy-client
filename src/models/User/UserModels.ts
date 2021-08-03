@@ -19,12 +19,14 @@ export interface IUser {
   name: string;
   email: string;
   leagueId: string;
+  isAdmin: boolean;
 }
 
 export interface IUserInfo {
   userId: string;
   googleTokenId: string;
   leagueId: string;
+  isAdmin: boolean;
 }
 
 export enum AUTH_LEVEL {

@@ -1,3 +1,5 @@
+import { IPlayer } from '../Player/PlayerModels';
+
 export interface ICreateLeagueRequest {
   leagueName: string;
   numberOfTeams: number;
@@ -22,10 +24,20 @@ export interface JoinLeagueRequest extends LeagueCreator {
 }
 
 export interface ILeagueInfo {
-  leagueNumber: number;
-  leagueName: string;
-  leagueCreator: string;
-  isExistFreePlace: boolean;
+  leagueId: string;
+  name: string;
+  creatorName: string;
+  leagueStatus: number;
+  allTeams: ITeam[];
+}
+
+export interface ITeam {
+  id: string;
+  userId: string;
+  name: string;
+  picture: number[];
+  positionInLeague: number;
+  nbaPlayers: IPlayer[];
 }
 
 export enum LeagueStatus {

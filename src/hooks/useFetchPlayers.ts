@@ -1,14 +1,16 @@
 import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
 import { IPlayer, IPlayerResponse } from '../models/Player/PlayerModels';
+import { RootState } from '../redux';
 import { getPlayers } from '../sagas/apis/playerApi';
 
-export const useFetchPlayers = () => {
-  // Depends on the boolean we'll trigger the relevant query
-
+export const useFetchAllPlayers = (leagueId: string, shouldTriggerQuery = false) => {
   return useQuery(
     'players',
     async () => {
       const { data }: { data: IPlayerResponse[] } = await getPlayers();
+
+      console.log('data', data);
 
       return data.map<IPlayer>((playerRes) => ({
         ...playerRes,
@@ -19,6 +21,7 @@ export const useFetchPlayers = () => {
     {
       retry: false,
       refetchOnWindowFocus: false,
+      enabled: shouldTriggerQuery,
     }
   );
 };

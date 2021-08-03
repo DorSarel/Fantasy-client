@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { GlobalPaths } from '../components/common/GlobalPath';
 import * as UserActions from '../redux/userSlice';
+import * as LoadingActions from '../redux/loadingSlice';
 import { useAuth } from './useAuth';
 
 const useGoogleAuth = (toPath: string) => {
@@ -13,19 +14,17 @@ const useGoogleAuth = (toPath: string) => {
   const { serverLogin } = useAuth();
 
   const onSuccess = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-    //TODO: send request to server to verify if user exist
+    dispatch(LoadingActions.startLoading());
     serverLogin({ googleResp: res as GoogleLoginResponse, redirectPath: toPath });
   };
 
   const onFailure = (res: any) => {
-    // console.log(res);
     alert('Failed to login using google auth');
     history.push(GlobalPaths.welcomeUrl);
   };
 
   const onLogoutSuccess = () => {
     alert('Logged out successfully');
-
     dispatch(UserActions.logoutUser());
 
     history.push(GlobalPaths.welcomeUrl);
