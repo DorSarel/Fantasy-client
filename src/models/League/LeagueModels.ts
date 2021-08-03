@@ -27,3 +27,9 @@ export interface ILeagueInfo {
   leagueCreator: string;
   isExistFreePlace: boolean;
 }
+
+export enum LeagueStatus {
+  Init = 0,
+  Draft,
+  Ready,
+}

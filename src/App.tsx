@@ -20,6 +20,7 @@ const App = () => {
         <GuardRoute path={GlobalPaths.playersUrl} exact={true} component={PlayersPage} />
         <GuardRoute path={GlobalPaths.createLeagueUrl} exact={true} component={CreateLeague} />
         <GuardRoute path={`${GlobalPaths.joinLeagueUrl}/:leagueId`} exact={true} component={JoinLeaguePage} />
+        {/* <GuardRoute path={`${GlobalPaths.draft}/:leagueId`} exact={true} component={() => <PlayersPage isDraftMode />} /> */}
         <Route path="/login" exact={true} component={LoginPage} />
       </Router>
     </div>

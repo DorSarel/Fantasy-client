@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Medal from '../../assets/images/medal.png';
 import hoopers from '../../assets/images/hoopers.png';
 import MediaBox from '../common/MediaBox';
 import ListViewComponent from '../common/ListView';
 import CardsSlider from '../common/Slider';
 import PlayersTable from '../common/PlayersTable';
-import { IPlayer } from '../../models/Player/PlayerModels';
+// import { IPlayer } from '../../models/Player/PlayerModels';
 
 // Mock Data
 import teams from '../../mocks/teams.json';

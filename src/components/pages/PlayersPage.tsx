@@ -5,9 +5,6 @@ import PlayersPositionsFilter from '../PlayersPage/PlayersPositionsFilter';
 import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayersTable from '../common/PlayersTable';
-
-// Mock Data
-import players from '../../mocks/freePlayers.json';
 import { useFetchPlayers } from '../../hooks/useFetchPlayers';
 
 const headers = [
@@ -56,7 +53,7 @@ const PlayersPage = () => {
   const [weeklyGames, setWeeklyGames] = useState(0);
 
   const { data, isLoading } = useFetchPlayers();
-  const players = data?.slice(0, 20) ?? [];
+  const players = data?.slice(0, 20) ?? []; // TOOD: pagination
 
   useEffect(() => {
     if (!isLoading) {
