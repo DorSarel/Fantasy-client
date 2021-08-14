@@ -59,7 +59,9 @@ const DraftPage = () => {
 
   const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(leagueId);
   const { data, isLoading } = useFetchAllPlayers(leagueId, leagueInfo?.leagueStatus === LeagueStatus.Draft);
-  const players = data?.slice(0, 20) ?? []; // TOOD: pagination - should be done from BE
+  const players = data ?? []; // TOOD: pagination - should be done from BE
+
+  console.log(filteredPlayers);
 
   useEffect(() => {
     if (!isLoading) {
@@ -93,7 +95,7 @@ const DraftPage = () => {
     let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
 
     if (positionsFilters.length > 0) {
-      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.leagues.standard.pos));
+      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.playerInfo.info.position));
     }
 
     if (teamName !== '') {

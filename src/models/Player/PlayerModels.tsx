@@ -8,12 +8,12 @@ export interface IPlayerResponse {
   lastName: string;
   teamId?: number;
   playerId: number;
-  heightInMeters?: number;
-  leagues: {
-    standard: {
-      jersey?: number;
-      active: boolean;
-      pos: string;
+  height?: number;
+  playerInfo: {
+    info: {
+      jerseyNumber?: number;
+      isActive: boolean;
+      position: string;
     };
   };
   ImagePath: string;

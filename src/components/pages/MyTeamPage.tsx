@@ -9,6 +9,12 @@ import PlayersTable from '../common/PlayersTable';
 
 // Mock Data
 import teams from '../../mocks/teams.json';
+import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
+import { ILeagueInfo, LeagueStatus } from '../../models/League/LeagueModels';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
+import { Redirect } from 'react-router-dom';
+import Loader from '../common/Loader';
 
 const headers = [
   {
@@ -49,7 +55,14 @@ const headers = [
 ];
 
 const MyTeam = () => {
+  const user = useSelector((store: RootState) => store.user.user);
+  const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(user.leagueId);
   const myTeam = teams[0]; // TODO - this is mock data
+
+  if (isFetchingLeagueInfo) return <Loader />;
+
+  if (leagueInfo.leagueStatus !== LeagueStatus.Ready) return <Redirect to={`/draft/${user.leagueId}`} />;
+
   return (
     <>
       <div className="left-column articles">

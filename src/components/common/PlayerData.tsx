@@ -12,7 +12,7 @@ const PlayerInfo: React.FC<Props> = ({ playerData }) => {
       <div className="player-basic">
         <h4>{`${playerData.firstName} ${playerData.lastName}`}</h4>
         <p>{playerData.teamName.substring(0, 3).toUpperCase()}</p>
-        <p>{playerData.leagues.standard.pos}</p>
+        <p>{playerData.playerInfo.info.position}</p>
       </div>
     </td>
   );
