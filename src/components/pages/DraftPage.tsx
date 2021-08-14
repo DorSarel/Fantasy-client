@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import SelectInput from '../common/SelectInput';
 import PlayersPositionsFilter from '../PlayersPage/PlayersPositionsFilter';
-import * as PlayerActions from '../../redux/playerSlice';
 import { IPlayer } from '../../models/Player/PlayerModels';
 import PlayersTable from '../common/PlayersTable';
 import { useFetchAllPlayers } from '../../hooks/useFetchPlayers';
@@ -11,6 +9,13 @@ import Loader from '../common/Loader';
 import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
 import { ILeagueInfo, LeagueStatus } from '../../models/League/LeagueModels';
 import { GlobalPaths } from '../common/GlobalPath';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
+import TeamSelectionBox from '../common/TeamSelectionBox';
+
+interface TeamSelection {
+  [id: string]: number[];
+}
 
 const headers = [
   {
@@ -56,18 +61,34 @@ const DraftPage = () => {
   const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>([]);
   const [teamName, setTeamName] = useState('');
   const [weeklyGames, setWeeklyGames] = useState(0);
+  const [selectingTeamId, setSelectingTeamId] = useState('');
+  const [teams, setTeams] = useState<TeamSelection>({});
+  const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
+  const [isTeamsSet, setIsTeamsSet] = useState(false);
 
   const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(leagueId);
   const { data, isLoading } = useFetchAllPlayers(leagueId, leagueInfo?.leagueStatus === LeagueStatus.Draft);
-  const players = data ?? []; // TOOD: pagination - should be done from BE
+  const players = useMemo(() => data ?? [], [data]);
 
-  console.log(filteredPlayers);
+  const user = useSelector((state: RootState) => state.user.user);
 
   useEffect(() => {
     if (!isLoading) {
       setFilteredPlayers(players);
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    if (leagueInfo) {
+      setSelectingTeamId(leagueInfo.allTeams[0].id);
+    }
+  }, [leagueInfo]);
+
+  useEffect(() => {
+    setFilteredPlayers((prevPlayers) => prevPlayers.filter((player) => !selectedPlayers.includes(player.playerId)));
+
+    if (selectedPlayers.length === leagueInfo.allTeams.length * 8) setIsTeamsSet(true);
+  }, [selectedPlayers]);
 
   const memoTeams = useMemo(() => {
     if (!players) return [];
@@ -93,6 +114,7 @@ const DraftPage = () => {
 
   const filterPlayers = () => {
     let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
+    newFilteredArray = newFilteredArray.filter((player) => !selectedPlayers.includes(player.playerId));
 
     if (positionsFilters.length > 0) {
       newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.playerInfo.info.position));
@@ -116,6 +138,26 @@ const DraftPage = () => {
     }
   };
 
+  const handlePlayerSelection = (playerId) => {
+    console.log(`Team with id ${selectingTeamId} selected player with id ${playerId}`);
+    setTeams((prevTeams) => ({ ...prevTeams, [selectingTeamId]: [...(prevTeams[selectingTeamId] ?? []), playerId] }));
+    setSelectedPlayers((prev) => [...prev, playerId]);
+
+    moveToNextTeamPick();
+  };
+
+  const moveToNextTeamPick = () => {
+    const currentSelectingIndex = leagueInfo.allTeams.findIndex((team) => team.id === selectingTeamId);
+
+    if (currentSelectingIndex === -1) {
+      alert('Failed to move to next team pick');
+      return;
+    }
+
+    const nextSelectingIndex = (currentSelectingIndex + 1) % leagueInfo.allTeams.length;
+    setSelectingTeamId(leagueInfo.allTeams[nextSelectingIndex].id);
+  };
+
   if (isFetchingLeagueInfo) return <Loader />;
 
   if (leagueInfo.leagueStatus === LeagueStatus.Ready) {
@@ -137,11 +179,24 @@ const DraftPage = () => {
           <SelectInput label="Healthy" />
         </div>
       </div>
+
+      {leagueInfo && (
+        <div className="turns-wrapper middle-column">
+          {leagueInfo.allTeams.map((team) => (
+            <TeamSelectionBox team={team} numberOfSelectedPlayers={teams[team.id]?.length ?? 0} isActive={selectingTeamId === team.id} />
+          ))}
+        </div>
+      )}
+
       <div className="players-main middle-column">
         {leagueInfo?.leagueStatus === LeagueStatus.Init ? (
           <p>Waiting for other players to join the league before starting the draft event</p>
+        ) : !user.isAdmin ? (
+          <p>Draft event is live! Talk with your league admin to start the draft</p>
+        ) : !isTeamsSet ? (
+          <PlayersTable headers={headers} players={filteredPlayers} callback={handlePlayerSelection} />
         ) : (
-          <PlayersTable headers={headers} players={filteredPlayers} />
+          <p>Finish</p>
         )}
       </div>
     </>

@@ -1,0 +1,28 @@
+.turns-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--color-nav);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.team-selection-box {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 10px;
+  color: var(--color-nav);
+
+  p,
+  span {
+    font-size: 2rem;
+  }
+
+  &-active {
+    color: red;
+  }
+}

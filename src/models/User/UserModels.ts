@@ -11,6 +11,7 @@ export interface ISetGoogleUser {
 export interface ISetUser extends ISetGoogleUser {
   userId: string;
   leagueId: string;
+  isAdmin: boolean;
 }
 
 export interface IUser {

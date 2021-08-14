@@ -29,6 +29,7 @@ export const useAuth = () => {
               email: userBasicProfile.getEmail(),
               userId: data.data.userId,
               leagueId: data.data.leagueId,
+              isAdmin: data.data.isAdmin,
             })
           );
         } else {

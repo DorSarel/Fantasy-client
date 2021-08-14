@@ -54,5 +54,18 @@
         font-size: 1.15rem;
       }
     }
+
+    .player-cta {
+      margin-inline-start: 1.5rem;
+      align-self: center;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background-color: var(--color-nav);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
   }
 }

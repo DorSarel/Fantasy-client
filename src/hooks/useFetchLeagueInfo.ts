@@ -7,7 +7,6 @@ export const useFetchLeagueInfo = (leagueId: string) => {
     'leagueInfo',
     async () => {
       const { data } = await getLeagueInfo(leagueId);
-
       return data;
     },
     {

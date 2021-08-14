@@ -23,12 +23,13 @@ const userSlice = createSlice({
       state.user.email = email;
     },
     setUser: (state, { payload }: PayloadAction<ISetUser>) => {
-      const { userId, leagueId, googleId, name, email } = payload;
+      const { userId, leagueId, googleId, name, email, isAdmin } = payload;
       state.user.googleId = googleId;
       state.user.name = name;
       state.user.email = email;
       state.user.userId = userId;
       state.user.leagueId = leagueId;
+      state.user.isAdmin = isAdmin;
     },
     logoutUser: (state) => {
       state.user = initialState.user;
