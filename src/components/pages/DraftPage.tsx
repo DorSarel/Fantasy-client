@@ -85,9 +85,10 @@ const DraftPage = () => {
   }, [leagueInfo]);
 
   useEffect(() => {
-    setFilteredPlayers((prevPlayers) => prevPlayers.filter((player) => !selectedPlayers.includes(player.playerId)));
-
-    if (selectedPlayers.length === leagueInfo.allTeams.length * 8) setIsTeamsSet(true);
+    if (leagueInfo) {
+      setFilteredPlayers((prevPlayers) => prevPlayers.filter((player) => !selectedPlayers.includes(player.playerId)));
+      if (selectedPlayers.length === leagueInfo.allTeams.length * 8) setIsTeamsSet(true);
+    }
   }, [selectedPlayers]);
 
   const memoTeams = useMemo(() => {

@@ -35,7 +35,7 @@ export const useCreateLeague = () => {
         alert('Joining was successfull. Redirecting in 1 seconds');
 
         setTimeout(() => {
-          history.push(GlobalPaths.myTeamUrl);
+          history.push(GlobalPaths.welcomeUrl);
         }, 2000);
       },
       onError: (error) => {

@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { getUser } from '../sagas/apis/userApi';
 import * as UserActions from '../redux/userSlice';
 import * as LoadingActions from '../redux/loadingSlice';
-// import { IUserInfo } from '../models/User/UserModels';
 
 export const useAuth = () => {
   const dispatch = useDispatch();

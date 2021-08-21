@@ -55,13 +55,7 @@ const headers = [
 ];
 
 const MyTeam = () => {
-  const user = useSelector((store: RootState) => store.user.user);
-  const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(user.leagueId);
   const myTeam = teams[0]; // TODO - this is mock data
-
-  if (isFetchingLeagueInfo) return <Loader />;
-
-  if (leagueInfo.leagueStatus !== LeagueStatus.Ready) return <Redirect to={`/draft/${user.leagueId}`} />;
 
   return (
     <>

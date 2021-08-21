@@ -19,6 +19,7 @@ const LoginPage = () => {
       signIn();
     }
   }, [authLevel, signIn]);
+
   return <div>{loading && <Loader />}</div>;
 };
 

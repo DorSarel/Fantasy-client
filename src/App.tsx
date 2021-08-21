@@ -10,16 +10,17 @@ import GuardRoute from './components/common/GuardRoute';
 import LoginPage from './components/pages/LoginPage';
 import JoinLeaguePage from './components/pages/JoinLeaguePage';
 import DraftPage from './components/pages/DraftPage';
+import withRedirect from './hoc/withRedirect';
 
 const App = () => {
   return (
     <div className="main-grid">
       <Router>
         <Header />
-        <Route path={GlobalPaths.welcomeUrl} exact={true} component={WelcomePage} />
-        <GuardRoute path={GlobalPaths.myTeamUrl} exact={true} component={MyTeam} />
+        <Route path={GlobalPaths.welcomeUrl} exact={true} component={withRedirect(WelcomePage)} />
+        <GuardRoute path={GlobalPaths.myTeamUrl} exact={true} component={withRedirect(MyTeam)} />
         <GuardRoute path={GlobalPaths.playersUrl} exact={true} component={PlayersPage} />
-        <GuardRoute path={GlobalPaths.createLeagueUrl} exact={true} component={CreateLeague} />
+        <GuardRoute path={GlobalPaths.createLeagueUrl} exact={true} component={withRedirect(CreateLeague)} />
         <GuardRoute path={`${GlobalPaths.joinLeagueUrl}/:leagueId`} exact={true} component={JoinLeaguePage} />
         <GuardRoute path={`${GlobalPaths.draft}/:leagueId`} exact={true} component={DraftPage} />
         <Route path="/login" exact={true} component={LoginPage} />

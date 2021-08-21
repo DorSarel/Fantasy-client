@@ -32,6 +32,7 @@ const userSlice = createSlice({
       state.user.isAdmin = isAdmin;
     },
     logoutUser: (state) => {
+      console.log('logging user out');
       state.user = initialState.user;
     },
   },

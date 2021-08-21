@@ -12,12 +12,6 @@ import { ICreateLeagueRequest, ILeagueInfo, LeagueCreator, LeagueStatus, Partici
 import { useCreateLeague } from '../../hooks/useCreateLeague';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
-import { GetAuthLevel } from '../../utils/helpers';
-import { AUTH_LEVEL } from '../../models/User/UserModels';
-import { Redirect } from 'react-router-dom';
-import { GlobalPaths } from '../common/GlobalPath';
-import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
-import Loader from '../common/Loader';
 
 const CreateLeague = () => {
   const [leagueName, setLeagueName] = useState('');
@@ -34,8 +28,6 @@ const CreateLeague = () => {
   });
   const { createLeague } = useCreateLeague();
   const user = useSelector((store: RootState) => store.user.user);
-  const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(user.leagueId);
-  const authLevel = GetAuthLevel(user);
 
   const onLeagueNameChange = (event: any) => {
     setLeagueName(event.target.value);
@@ -144,13 +136,6 @@ const CreateLeague = () => {
 
     createLeague(request);
   };
-
-  if (isFetchingLeagueInfo) return <Loader />;
-
-  if (leagueInfo && (leagueInfo.leagueStatus === LeagueStatus.Init || leagueInfo.leagueStatus === LeagueStatus.Draft))
-    return <Redirect to={`${GlobalPaths.draft}/${leagueInfo.leagueId}`} />;
-
-  if (authLevel === AUTH_LEVEL.AUTH_FULL) return <Redirect to={GlobalPaths.myTeamUrl} />;
 
   return (
     <>
