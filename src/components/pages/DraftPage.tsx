@@ -73,10 +73,16 @@ const DraftPage = () => {
   const user = useSelector((state: RootState) => state.user.user);
 
   useEffect(() => {
+    if (isTeamsSet) {
+      //TBD: call addPlayersToTeams api
+    }
+  }, [isTeamsSet]);
+
+  useEffect(() => {
     if (!isLoading) {
       setFilteredPlayers(players);
     }
-  }, [isLoading]);
+  }, [isLoading, players]);
 
   useEffect(() => {
     if (leagueInfo) {
@@ -184,7 +190,7 @@ const DraftPage = () => {
       {leagueInfo && (
         <div className="turns-wrapper middle-column">
           {leagueInfo.allTeams.map((team) => (
-            <TeamSelectionBox team={team} numberOfSelectedPlayers={teams[team.id]?.length ?? 0} isActive={selectingTeamId === team.id} />
+            <TeamSelectionBox key={team.id} team={team} numberOfSelectedPlayers={teams[team.id]?.length ?? 0} isActive={selectingTeamId === team.id} />
           ))}
         </div>
       )}
