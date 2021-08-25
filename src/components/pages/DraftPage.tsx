@@ -12,6 +12,7 @@ import { GlobalPaths } from '../common/GlobalPath';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
 import TeamSelectionBox from '../common/TeamSelectionBox';
+import { useCompleteDraft } from '../../hooks/useCompleteDraft';
 
 interface TeamSelection {
   [id: string]: number[];
@@ -65,6 +66,7 @@ const DraftPage = () => {
   const [teams, setTeams] = useState<TeamSelection>({});
   const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
   const [isTeamsSet, setIsTeamsSet] = useState(false);
+  const { completeDraft } = useCompleteDraft();
 
   const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(leagueId);
   const { data, isLoading } = useFetchAllPlayers(leagueId, leagueInfo?.leagueStatus === LeagueStatus.Draft);
@@ -74,7 +76,7 @@ const DraftPage = () => {
 
   useEffect(() => {
     if (isTeamsSet) {
-      //TBD: call addPlayersToTeams api
+      completeDraft({ leagueId, nbaPlayersId: teams });
     }
   }, [isTeamsSet]);
 

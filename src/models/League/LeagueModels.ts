@@ -45,3 +45,10 @@ export enum LeagueStatus {
   Draft,
   Ready,
 }
+
+export interface ICompleteDraftRequest {
+  leagueId: string;
+  nbaPlayersId: {
+    [teamId: string]: number[];
+  };
+}

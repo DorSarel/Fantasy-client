@@ -35,8 +35,8 @@ export const useCreateLeague = () => {
         alert('Joining was successfull. Redirecting in 1 seconds');
 
         setTimeout(() => {
-          history.push(GlobalPaths.welcomeUrl);
-        }, 2000);
+          history.push(`${GlobalPaths.draft}/${request.leagueId}`);
+        }, 1000);
       },
       onError: (error) => {
         console.log('faled to join league');
