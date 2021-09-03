@@ -34,11 +34,11 @@
                 "weeklyGames": 3,
                 "teamId": 4,
                 "heightInMeters": 2.06,
-                "leagues": {
-                  "standard": {
-                    "active": true,
-                    "pos": "F",
-                    "jersey": 9
+                "playerInfo": {
+                  "info": {
+                    "isActive": true,
+                    "position": "F",
+                    "jerseyNumber": 9
                   }
                 },
                 "ImagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630166.png"
@@ -51,11 +51,11 @@
                 "weeklyGames": 3,
                 "teamId": 5,
                 "heightInMeters": 1.98,
-                "leagues": {
-                  "standard": {
-                    "active": true,
-                    "pos": "G",
-                    "jersey": 2
+                "playerInfo": {
+                  "info": {
+                    "isActive": true,
+                    "position": "G",
+                    "jerseyNumber": 2
                   }
                 },
                 "ImagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630163.png"
@@ -68,11 +68,11 @@
                 "weeklyGames": 3,
                 "teamId": 6,
                 "heightInMeters": 1.98,
-                "leagues": {
-                  "standard": {
-                    "active": true,
-                    "pos": "PG",
-                    "jersey": 5
+                "playerInfo": {
+                  "info": {
+                    "isActive": true,
+                    "position": "PG",
+                    "jerseyNumber": 5
                   }
                 },
                 "ImagePath": "https://cdn.nba.com/headshots/nba/latest/1040x760/203115.png"

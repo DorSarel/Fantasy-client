@@ -13,8 +13,8 @@ const CardsSlider = () => {
       secondTeam: 'Katzav Butchers',
       firstScore: 117,
       secondScore: 105,
-      firstImage: <img src={hoopers} />,
-      secondImage: <img src={hoopers} />,
+      firstImage: <img src={hoopers} alt="logo" />,
+      secondImage: <img src={hoopers} alt="logo" />,
     },
     {
       header: 'Current match: ',
@@ -22,8 +22,8 @@ const CardsSlider = () => {
       secondTeam: 'Team Hoopers',
       firstScore: 117,
       secondScore: 105,
-      firstImage: <img src={hoopers} />,
-      secondImage: <img src={hoopers} />,
+      firstImage: <img src={hoopers} alt="logo" />,
+      secondImage: <img src={hoopers} alt="logo" />,
     },
     {
       header: 'Next match: ',
@@ -31,8 +31,8 @@ const CardsSlider = () => {
       secondTeam: 'Team Hoopers',
       firstScore: 117,
       secondScore: 105,
-      firstImage: <img src={hoopers} />,
-      secondImage: <img src={hoopers} />,
+      firstImage: <img src={hoopers} alt="logo" />,
+      secondImage: <img src={hoopers} alt="logo" />,
     },
   ];
 

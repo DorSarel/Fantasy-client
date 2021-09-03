@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Medal from '../../assets/images/medal.png';
 import hoopers from '../../assets/images/hoopers.png';
 import MediaBox from '../common/MediaBox';
 import ListViewComponent from '../common/ListView';
 import CardsSlider from '../common/Slider';
 import PlayersTable from '../common/PlayersTable';
-import { IPlayer } from '../../models/Player/PlayerModels';
+// import { IPlayer } from '../../models/Player/PlayerModels';
 
 // Mock Data
 import teams from '../../mocks/teams.json';
+import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
+import { ILeagueInfo, LeagueStatus } from '../../models/League/LeagueModels';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
+import { Redirect } from 'react-router-dom';
+import Loader from '../common/Loader';
 
 const headers = [
   {
@@ -50,6 +56,7 @@ const headers = [
 
 const MyTeam = () => {
   const myTeam = teams[0]; // TODO - this is mock data
+
   return (
     <>
       <div className="left-column articles">

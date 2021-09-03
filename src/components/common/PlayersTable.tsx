@@ -10,9 +10,10 @@ interface IHeader {
 interface Props {
   players: IPlayer[];
   headers: IHeader[];
+  callback?: (...args) => void;
 }
 
-const PlayersTable: React.FC<Props> = ({ headers, players }) => {
+const PlayersTable: React.FC<Props> = ({ headers, players, callback = () => true }) => {
   const data = React.useMemo(
     () =>
       players.map((player) => {
@@ -27,6 +28,7 @@ const PlayersTable: React.FC<Props> = ({ headers, players }) => {
       }),
     [players]
   );
+
   return (
     <div className="table-container">
       <table>
@@ -62,7 +64,7 @@ const PlayersTable: React.FC<Props> = ({ headers, players }) => {
         <tbody>
           {data.map((playerData) => (
             <tr className="table-body-row" key={playerData.id}>
-              <PlayerInfo playerData={playerData.player} />
+              <PlayerInfo playerData={playerData.player} callback={callback} />
               <td style={{ width: '5rem' }}>{playerData.avg}</td>
               <td style={{ width: '10rem' }}>{playerData.weeklyGames}</td>
               <td>{playerData.stats}</td>

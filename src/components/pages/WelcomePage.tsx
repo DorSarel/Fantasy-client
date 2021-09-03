@@ -8,15 +8,24 @@ import MediaBox from '../common/MediaBox';
 import { GlobalPaths } from '../common/GlobalPath';
 import GuardLink from '../common/GuardLink';
 import VideoDetails from '../common/VideoDetails';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
+import { GetAuthLevel } from '../../utils/helpers';
+import { AUTH_LEVEL } from '../../models/User/UserModels';
+import { Redirect } from 'react-router-dom';
 
 const WelcomePage = () => {
   const [video, setVideo] = useState();
+  const user = useSelector((store: RootState) => store.user.user);
+  const authLevel = GetAuthLevel(user);
 
   useEffect(() => {
     (async () => {
       const video = await onTermSubmit('NBA');
       setVideo(video);
     })();
+
+    return () => setVideo(null);
   }, []);
 
   const onTermSubmit = async (term: string) => {
@@ -33,6 +42,8 @@ const WelcomePage = () => {
       console.log(error.message);
     }
   };
+
+  if (authLevel === AUTH_LEVEL.AUTH_FULL) return <Redirect to={GlobalPaths.myTeamUrl} />;
 
   return (
     <>

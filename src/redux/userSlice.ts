@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ISetUser, IUserStore } from '../models/User/UserModels';
+import { ISetGoogleUser, ISetUser, IUserStore } from '../models/User/UserModels';
 
 const initialState: IUserStore = {
   user: {
@@ -8,6 +8,7 @@ const initialState: IUserStore = {
     name: '',
     email: '',
     leagueId: '',
+    isAdmin: false,
   },
 };
 
@@ -15,17 +16,27 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, { payload }: PayloadAction<ISetUser>) => {
-      const { id, name, email } = payload;
-      state.user.googleId = id;
+    setGoogleUser: (state, { payload }: PayloadAction<ISetGoogleUser>) => {
+      const { googleId, name, email } = payload;
+      state.user.googleId = googleId;
       state.user.name = name;
       state.user.email = email;
     },
+    setUser: (state, { payload }: PayloadAction<ISetUser>) => {
+      const { userId, leagueId, googleId, name, email, isAdmin } = payload;
+      state.user.googleId = googleId;
+      state.user.name = name;
+      state.user.email = email;
+      state.user.userId = userId;
+      state.user.leagueId = leagueId;
+      state.user.isAdmin = isAdmin;
+    },
     logoutUser: (state) => {
+      console.log('logging user out');
       state.user = initialState.user;
     },
   },
 });
 
-export const { setUser, logoutUser } = userSlice.actions;
+export const { setGoogleUser, setUser, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
