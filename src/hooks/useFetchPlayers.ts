@@ -9,12 +9,8 @@ export const useFetchAllPlayers = (leagueId: string, shouldTriggerQuery = false)
     'players',
     async () => {
       const { data }: { data: IPlayerResponse[] } = await getPlayers();
-
-      return data.map<IPlayer>((playerRes) => ({
-        ...playerRes,
-        teamName: 'Los Angels Lakers',
-        weeklyGames: 3,
-      }));
+      console.log(data);
+      return data;
     },
     {
       retry: false,

@@ -2,7 +2,7 @@ import { RequestOptions } from 'https';
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://localhost:44395/api/v1/',
+  baseURL: 'https://localhost:5001/api/v1/', // TODO: revert to real api when finsih
 });
 
 export class HttpClient {
@@ -13,7 +13,7 @@ export class HttpClient {
         headers: options?.headers,
         params: params,
       });
-    } catch (error) {
+    } catch (error: any) {
       axiosResponse = {
         status: error.response?.status,
         headers: error.response?.headers,
@@ -37,7 +37,7 @@ export class HttpClient {
         },
         params: params,
       });
-    } catch (error) {
+    } catch (error: any) {
       axiosResponse = {
         status: error.response?.status,
         headers: error.response?.headers,
@@ -59,7 +59,7 @@ export class HttpClient {
           'Content-Type': 'application/json',
         },
       });
-    } catch (error) {
+    } catch (error: any) {
       axiosResponse = {
         status: error.response?.status,
         headers: error.response?.headers,

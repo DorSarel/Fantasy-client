@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import trophy from '../../assets/images/trophy 1.png';
-// import twitter from '../../assets/images/twitter-icon.png';
-// import instagram from '../../assets/images/instagram-icon.png';
 import youtube from '../../sagas/apis/youtubeApi';
 import GlobalList from '../common/ListView';
-import MediaBox from '../common/MediaBox';
 import { GlobalPaths } from '../common/GlobalPath';
 import GuardLink from '../common/GuardLink';
 import VideoDetails from '../common/VideoDetails';
@@ -13,19 +10,24 @@ import { RootState } from '../../redux';
 import { GetAuthLevel } from '../../utils/helpers';
 import { AUTH_LEVEL } from '../../models/User/UserModels';
 import { Redirect } from 'react-router-dom';
+import { useFetchTopPlayers } from '../../hooks/useFetchTopPlayers';
+import Loader from '../common/Loader';
 
 const WelcomePage = () => {
-  const [video, setVideo] = useState();
+  const [firstVideo, setFirstVideo] = useState();
+  const [secondVideo, setSecondVideo] = useState();
   const user = useSelector((store: RootState) => store.user.user);
   const authLevel = GetAuthLevel(user);
+  const {data: players, isLoading} = useFetchTopPlayers();
 
   useEffect(() => {
     (async () => {
-      const video = await onTermSubmit('NBA');
-      setVideo(video);
+      const [firstVideo, secondVideo] = await onTermSubmit('NBA');
+      setFirstVideo(firstVideo);
+      setSecondVideo(secondVideo);
     })();
 
-    return () => setVideo(null);
+    return () => setFirstVideo(null);
   }, []);
 
   const onTermSubmit = async (term: string) => {
@@ -36,14 +38,17 @@ const WelcomePage = () => {
         },
       });
       const videos = response.data.items;
-      const searchedVideo = videos[Math.floor(Math.random() * videos.length)];
-      return searchedVideo;
-    } catch (error) {
+      const firstVideo = videos[Math.floor(Math.random() * videos.length)];
+      const secondVideo = videos[Math.floor(Math.random() * videos.length)];
+      return [firstVideo, secondVideo];
+    } catch (error: any) {
       console.log(error.message);
     }
   };
 
   if (authLevel === AUTH_LEVEL.AUTH_FULL) return <Redirect to={GlobalPaths.myTeamUrl} />;
+
+  if (isLoading) return <Loader />
 
   return (
     <>
@@ -61,14 +66,13 @@ const WelcomePage = () => {
       </div>
       <div className="left-boxes left-column">
         <h2>NBA Recent News: </h2>
-        <VideoDetails video={video} />
-        <MediaBox />
-        <MediaBox />
+        <VideoDetails video={firstVideo} />
+        <VideoDetails video={secondVideo} />
       </div>
       <div className="right-boxes right-column">
-        <GlobalList header="Tonight Games: " />
-        <GlobalList header="Last Games: " />
-        <GlobalList header="Top Added Players: " />
+        <GlobalList header="Top Scorers:" players={players.topScorers} keyToShow="pts" />
+        <GlobalList header="Top Assists:" players={players.topAssists} keyToShow="ast" />
+        <GlobalList header="Top Rebounders:" players={players.topRebounds} keyToShow="reb" />
       </div>
     </>
   );

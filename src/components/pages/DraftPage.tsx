@@ -102,20 +102,20 @@ const DraftPage = () => {
   const memoTeams = useMemo(() => {
     if (!players) return [];
     const teamsSet = players.reduce<Set<string>>((acc, player) => {
-      return acc.add(player.teamName);
+      return acc.add(player.team);
     }, new Set<string>());
 
     return Array.from(teamsSet);
   }, [players]);
 
-  const memoWeeklyGames = useMemo(() => {
-    if (!players) return [];
-    Array.from(
-      players.reduce<Set<number>>((acc, player) => {
-        return acc.add(player.weeklyGames);
-      }, new Set<number>())
-    );
-  }, [players]);
+  // const memoWeeklyGames = useMemo(() => {
+  //   if (!players) return [];
+  //   Array.from(
+  //     players.reduce<Set<number>>((acc, player) => {
+  //       return acc.add(player.weeklyGames);
+  //     }, new Set<number>())
+  //   );
+  // }, [players]);
 
   useEffect(() => {
     filterPlayers();
@@ -126,15 +126,11 @@ const DraftPage = () => {
     newFilteredArray = newFilteredArray.filter((player) => !selectedPlayers.includes(player.playerId));
 
     if (positionsFilters.length > 0) {
-      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.playerInfo.info.position));
+      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.pos1));
     }
 
     if (teamName !== '') {
-      newFilteredArray = newFilteredArray.filter((player) => player.teamName === teamName);
-    }
-
-    if (weeklyGames > 0) {
-      newFilteredArray = newFilteredArray.filter((player) => player.weeklyGames === weeklyGames);
+      newFilteredArray = newFilteredArray.filter((player) => player.team === teamName);
     }
 
     setFilteredPlayers(newFilteredArray);
@@ -183,7 +179,7 @@ const DraftPage = () => {
         <PlayersPositionsFilter onChange={handlePositionCheck} selectedPositions={positionsFilters} />
         <div className="players-filters-select">
           <SelectInput label="Teams" items={memoTeams} onChange={(e) => setTeamName((e.target as HTMLInputElement).value)} />
-          <SelectInput label="Weekly Games" items={memoWeeklyGames} onChange={(e) => setWeeklyGames(parseInt((e.target as HTMLInputElement).value))} />
+          {/* <SelectInput label="Weekly Games" items={memoWeeklyGames} onChange={(e) => setWeeklyGames(parseInt((e.target as HTMLInputElement).value))} /> */}
           <SelectInput label="Available" />
           <SelectInput label="Healthy" />
         </div>

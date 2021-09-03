@@ -1,23 +1,27 @@
 import React from 'react';
+import { IPlayer } from '../../models/Player/PlayerModels';
 
 interface Props {
-    header?: string;
-    label1?: string;
-    label2?: string;
-    label3?: string;
-
+    header: string;
+    players?: IPlayer[];
+    keyToShow: string;
 }
 
-const ListViewComponent:React.FC<Props> = ({header, label1, label2, label3}) => {
+const ListViewComponent:React.FC<Props> = ({header, players, keyToShow}) => {
  
     return (
         <div className="global-list">
            <ul className="list">
-               <p>{header}</p>
-               <hr/>
-               <li ><hr style={{marginTop:"8rem"}}/>{label1}</li>
-               <li ><hr style={{marginTop:"8rem"}}/>{label2}</li>
-                {label3}
+               <li className={'list__header'}>{header}</li>
+               {players?.map((player) => (
+                   <li className="list__player">
+                       <div className='list__personal'>
+                            <p>{player.player}</p>
+                            <span>{player.team.toUpperCase()}</span>
+                       </div>
+                       <p className='list__score'>{player[keyToShow]}</p>
+                   </li>
+               ))}
            </ul>
         </div>
     );

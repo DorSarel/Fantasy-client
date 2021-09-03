@@ -64,8 +64,8 @@ const MyTeam = () => {
         <MediaBox />
         <MediaBox />
         <div className="bottom-boxes">
-          <ListViewComponent header="Hottest Free Agents: " />
-          <ListViewComponent header="Trending Free Agents: " />
+          {/* <ListViewComponent header="Hottest Free Agents: " /> */}
+          {/* <ListViewComponent header="Trending Free Agents: " /> */}
         </div>
       </div>
       <div className="middle-column main-div">
@@ -85,7 +85,7 @@ const MyTeam = () => {
         <div className="slider-main">
           <CardsSlider />
         </div>
-        <PlayersTable headers={headers} players={myTeam.players} />
+        {/* <PlayersTable headers={headers} players={myTeam.players} /> */}
       </div>
 
       <div className="right-column weekly-recap">

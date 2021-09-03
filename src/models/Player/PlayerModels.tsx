@@ -3,23 +3,34 @@ export interface IPlayerStore {
   error: null | string;
 }
 
-export interface IPlayerResponse {
+export interface IPlayerResponse extends IPlayerWithStats {
   firstName: string;
   lastName: string;
   teamId?: number;
   playerId: number;
   height?: number;
-  playerInfo: {
-    info: {
-      jerseyNumber?: number;
-      isActive: boolean;
-      position: string;
-    };
-  };
   ImagePath: string;
+  jerseyNumber: number;
 }
 
-export interface IPlayer extends IPlayerResponse {
-  weeklyGames: number;
-  teamName: string;
+export interface IPlayerWithStats {
+  player: string;
+  team: string;
+  pos1: string;
+  pos2: string;
+  predictedGames: number;
+  min: number;
+  fgmi: number;
+  ftmi: number;
+  tpm: number;
+  reb: number;
+  ast: number;
+  stl: number;
+  blk: number;
+  to: number;
+  pts: number;
+  avg: number;
+  progression: string;
 }
+
+export type IPlayer = IPlayerResponse;

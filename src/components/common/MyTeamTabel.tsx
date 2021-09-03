@@ -55,7 +55,6 @@ const MyTeamTabel: React.FC<Props> = ({ players }) => {
         return {
           player: player,
           avg: 30,
-          weeklyGames: player.weeklyGames,
           stats: '',
           total: 52.5,
           id: player.playerId,
@@ -100,7 +99,6 @@ const MyTeamTabel: React.FC<Props> = ({ players }) => {
             <tr className="table-body-row" key={playerData.id}>
               <PlayerInfo playerData={playerData.player} />
               <td style={{ width: '5rem' }}>{playerData.avg}</td>
-              <td style={{ width: '10rem' }}>{playerData.weeklyGames}</td>
               <td>{playerData.stats}</td>
               <td></td>
               <td></td>

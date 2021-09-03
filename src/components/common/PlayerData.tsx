@@ -12,8 +12,8 @@ const PlayerInfo: React.FC<Props> = ({ playerData, callback = () => true }) => {
       <img src={playerData.ImagePath} alt={playerData.firstName} />
       <div className="player-basic">
         <h4>{`${playerData.firstName} ${playerData.lastName}`}</h4>
-        <p>{playerData.teamName.substring(0, 3).toUpperCase()}</p>
-        <p>{playerData.playerInfo.info.position}</p>
+        <p>{playerData.team.toUpperCase()}</p>
+        <p>{playerData.pos1}</p>
       </div>
       <button className="player-cta" onClick={() => callback(playerData.playerId)}>
         +
