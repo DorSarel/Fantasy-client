@@ -9,7 +9,6 @@ export const useFetchAllPlayers = (leagueId: string, shouldTriggerQuery = false)
     'players',
     async () => {
       const { data }: { data: IPlayerResponse[] } = await getPlayers();
-      console.log(data);
       return data;
     },
     {

@@ -9,11 +9,10 @@ interface Props {
 const PlayerInfo: React.FC<Props> = ({ playerData, callback = () => true }) => {
   return (
     <td className="player-info">
-      <img src={playerData.ImagePath} alt={playerData.firstName} />
       <div className="player-basic">
         <h4>{`${playerData.firstName} ${playerData.lastName}`}</h4>
         <p>{playerData.team.toUpperCase()}</p>
-        <p>{playerData.pos1} {playerData.pos2 && `- ${playerData.pos2}`} </p>
+        <p>{playerData.poS1} {playerData.poS2 && `- ${playerData.poS2}`} </p>
       </div>
       <button className="player-cta" onClick={() => callback(playerData.playerId)}>
         +

@@ -16,8 +16,8 @@ export interface IPlayerResponse extends IPlayerWithStats {
 export interface IPlayerWithStats {
   player: string;
   team: string;
-  pos1: string;
-  pos2: string;
+  poS1: string;
+  poS2: string;
   predictedGames: number;
   min: number;
   fgmi: number;

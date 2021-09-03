@@ -113,15 +113,6 @@ const DraftPage = () => {
     return Array.from(teamsSet);
   }, [players]);
 
-  // const memoWeeklyGames = useMemo(() => {
-  //   if (!players) return [];
-  //   Array.from(
-  //     players.reduce<Set<number>>((acc, player) => {
-  //       return acc.add(player.weeklyGames);
-  //     }, new Set<number>())
-  //   );
-  // }, [players]);
-
   useEffect(() => {
     filterPlayers();
   }, [positionsFilters, teamName]);
@@ -131,7 +122,7 @@ const DraftPage = () => {
     newFilteredArray = newFilteredArray.filter((player) => !selectedPlayers.includes(player.playerId));
 
     if (positionsFilters.length > 0) {
-      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.pos1));
+      newFilteredArray = newFilteredArray.filter((player) => positionsFilters.includes(player.poS1) || positionsFilters.includes(player.poS2));
     }
 
     if (teamName !== '') {
