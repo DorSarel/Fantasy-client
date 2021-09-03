@@ -13,7 +13,7 @@ const PlayerInfo: React.FC<Props> = ({ playerData, callback = () => true }) => {
       <div className="player-basic">
         <h4>{`${playerData.firstName} ${playerData.lastName}`}</h4>
         <p>{playerData.team.toUpperCase()}</p>
-        <p>{playerData.pos1}</p>
+        <p>{playerData.pos1} {playerData.pos2 && `- ${playerData.pos2}`} </p>
       </div>
       <button className="player-cta" onClick={() => callback(playerData.playerId)}>
         +

@@ -14,20 +14,6 @@ interface Props {
 }
 
 const PlayersTable: React.FC<Props> = ({ headers, players, callback = () => true }) => {
-  const data = React.useMemo(
-    () =>
-      players.map((player) => {
-        return {
-          player: player,
-          avg: 30,
-          stats: '',
-          total: 52.5,
-          id: player.playerId,
-        };
-      }),
-    [players]
-  );
-
   return (
     <div className="table-container">
       <table>
@@ -61,17 +47,20 @@ const PlayersTable: React.FC<Props> = ({ headers, players, callback = () => true
           </tr>
         </thead>
         <tbody>
-          {data.map((playerData) => (
-            <tr className="table-body-row" key={playerData.id}>
-              <PlayerInfo playerData={playerData.player} callback={callback} />
-              <td style={{ width: '5rem' }}>{playerData.avg}</td>
-              <td>{playerData.stats}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>{playerData.total}</td>
+          {players.map((playerData) => (
+            <tr className="table-body-row" key={playerData.playerId}>
+              <PlayerInfo playerData={playerData} callback={callback} />
+              <td>{playerData.min}</td>
+              <td>{playerData.fgmi}</td>
+              <td>{playerData.ftmi}</td>
+              <td>{playerData.tpm}</td>
+              <td>{playerData.reb}</td>
+              <td>{playerData.ast}</td>
+              <td>{playerData.stl}</td>
+              <td>{playerData.blk}</td>
+              <td>{playerData.to}</td>
+              <td>{playerData.pts}</td>
+              <td>{playerData.avg}</td>
             </tr>
           ))}
         </tbody>

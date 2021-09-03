@@ -23,36 +23,42 @@ const headers = [
     key: 'Player',
   },
   {
-    key: 'Avg',
-  },
-  {
-    key: 'Weekly Games',
-  },
-  {
     key: 'Stats',
     subHeaders: [
       {
-        key: 'PPG',
+        key: 'MIN',
       },
       {
-        key: 'RPG',
+        key: 'FGMI',
       },
       {
-        key: 'FGP',
+        key: 'FTMI',
       },
       {
-        key: 'FGS',
+        key: 'TPM',
       },
       {
-        key: 'FGA',
+        key: 'REB',
       },
       {
-        key: 'FGT',
+        key: 'AST',
       },
+      {
+        key: 'STL',
+      },
+      {
+        key: 'BLK',
+      },
+      {
+        key: 'TO',
+      },
+      {
+        key: 'PTS',
+      }
     ],
   },
   {
-    key: 'Total',
+    key: 'Avg',
   },
 ];
 
@@ -61,7 +67,6 @@ const DraftPage = () => {
   const [positionsFilters, setPositionsFilters] = useState<string[]>([]);
   const [filteredPlayers, setFilteredPlayers] = useState<IPlayer[]>([]);
   const [teamName, setTeamName] = useState('');
-  const [weeklyGames, setWeeklyGames] = useState(0);
   const [selectingTeamId, setSelectingTeamId] = useState('');
   const [teams, setTeams] = useState<TeamSelection>({});
   const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
@@ -119,7 +124,7 @@ const DraftPage = () => {
 
   useEffect(() => {
     filterPlayers();
-  }, [positionsFilters, teamName, weeklyGames]);
+  }, [positionsFilters, teamName]);
 
   const filterPlayers = () => {
     let newFilteredArray: IPlayer[] = JSON.parse(JSON.stringify(players));
@@ -179,9 +184,6 @@ const DraftPage = () => {
         <PlayersPositionsFilter onChange={handlePositionCheck} selectedPositions={positionsFilters} />
         <div className="players-filters-select">
           <SelectInput label="Teams" items={memoTeams} onChange={(e) => setTeamName((e.target as HTMLInputElement).value)} />
-          {/* <SelectInput label="Weekly Games" items={memoWeeklyGames} onChange={(e) => setWeeklyGames(parseInt((e.target as HTMLInputElement).value))} /> */}
-          <SelectInput label="Available" />
-          <SelectInput label="Healthy" />
         </div>
       </div>
 

@@ -4,7 +4,7 @@ import { IPlayer } from '../../models/Player/PlayerModels';
 interface Props {
     header: string;
     players?: IPlayer[];
-    keyToShow: string;
+    keyToShow?: string;
 }
 
 const ListViewComponent:React.FC<Props> = ({header, players, keyToShow}) => {
@@ -12,9 +12,9 @@ const ListViewComponent:React.FC<Props> = ({header, players, keyToShow}) => {
     return (
         <div className="global-list">
            <ul className="list">
-               <li className={'list__header'}>{header}</li>
+               <li key={1} className={'list__header'}>{header}</li>
                {players?.map((player) => (
-                   <li className="list__player">
+                   <li key={player.playerId} className="list__player">
                        <div className='list__personal'>
                             <p>{player.player}</p>
                             <span>{player.team.toUpperCase()}</span>

@@ -6,3 +6,7 @@ export const GetAuthLevel = (user: IUser) => {
 
   return AUTH_LEVEL.AUTH_NONE;
 };
+
+export const IsStringNullOrEmpty = (str: string) => {
+  return str === null || str === '' || str === undefined;
+}
