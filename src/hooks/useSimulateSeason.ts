@@ -4,7 +4,7 @@ import { simulateSeasonAsync } from '../sagas/apis/leagueApi';
 export const useSimulateSeason = (leagueId: string, teamId: string) => {
   const queryClient = useQueryClient();
 
-  const { mutate: simulateSeason } = useMutation(
+  const { mutate: simulateSeason, isLoading } = useMutation(
     () => {
       return simulateSeasonAsync(leagueId);
     },
@@ -18,5 +18,6 @@ export const useSimulateSeason = (leagueId: string, teamId: string) => {
 
   return {
     simulateSeason,
+    simulationLoading: isLoading,
   };
 };

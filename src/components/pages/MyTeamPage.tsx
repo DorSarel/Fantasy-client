@@ -1,19 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import Medal from '../../assets/images/medal.png';
+import { useEffect, useMemo, useState } from 'react';
 import hoopers from '../../assets/images/hoopers.png';
-import MediaBox from '../common/MediaBox';
 import ListViewComponent from '../common/ListView';
-import CardsSlider from '../common/Slider';
 import PlayersTable from '../common/PlayersTable';
 
 import { useFetchLeagueInfo } from '../../hooks/useFetchLeagueInfo';
-import { ILeagueInfo, LeagueStatus } from '../../models/League/LeagueModels';
+import { ILeagueInfo } from '../../models/League/LeagueModels';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
 import Loader from '../common/Loader';
 import { useFetchTeamById } from '../../hooks/useFetchTeamById';
 import { ITeamResponse } from '../../models/Team/TeamsModel';
-import { useFetchTopPlayers } from '../../hooks/useFetchTopPlayers';
 import { useSimulateSeason } from '../../hooks/useSimulateSeason';
 
 const headers = [
@@ -65,7 +61,7 @@ const MyTeam = () => {
   const { leagueId, userId, isAdmin } = useSelector((state: RootState) => state.user.user);
   const { data: leagueInfo, isLoading: isFetchingLeagueInfo }: { data: ILeagueInfo; isLoading: boolean } = useFetchLeagueInfo(leagueId);
   const { data: team, isLoading }: { data: ITeamResponse; isLoading: boolean } = useFetchTeamById(leagueId, teamId);
-  const { simulateSeason } = useSimulateSeason(leagueId, teamId);
+  const { simulateSeason, simulationLoading } = useSimulateSeason(leagueId, teamId);
 
   const teamMatchups = useMemo(() => {
     if (leagueInfo && teamId) {
@@ -74,19 +70,10 @@ const MyTeam = () => {
     }
   }, [leagueInfo, teamId]);
 
-  const topScorers = useMemo(() => {
+  const topPlayers = useMemo(() => {
     if (team) {
       const copiedArray = [...team.players];
-      copiedArray.sort((playerA, playerB) => playerB.pts - playerA.pts);
-
-      return copiedArray.slice(0, 3);
-    }
-  }, [team]);
-
-  const topRebounders = useMemo(() => {
-    if (team) {
-      const copiedArray = [...team.players];
-      copiedArray.sort((playerA, playerB) => playerB.reb - playerA.reb);
+      copiedArray.sort((playerA, playerB) => playerB.avg - playerA.avg);
 
       return copiedArray.slice(0, 3);
     }
@@ -99,15 +86,25 @@ const MyTeam = () => {
     }
   }, [leagueInfo]);
 
-  if (isFetchingLeagueInfo || isLoading) return <Loader />;
+  if (isFetchingLeagueInfo || isLoading || simulationLoading) return <Loader />;
 
   return team ? (
     <>
       <div className="left-column articles">
-        <div className="bottom-boxes">
-          <ListViewComponent header="Top Scorers:" players={topScorers} keyToShow={'pts'} />
-          <ListViewComponent header="Top Rebounders:" players={topRebounders} keyToShow={'reb'} />
+        <div className="board">
+          <h2>League Board</h2>
+          {leagueInfo &&
+            leagueInfo.allTeams
+              .sort((teamA, teamB) => teamA.positionInLeague - teamB.positionInLeague)
+              .map((team) => (
+                <div className="board__item">
+                  <span className="board__position">{team.positionInLeague}</span>
+                  <span className="board__name">{team.name}</span>
+                  <span className="board__score">{team.numberOfWins}</span>
+                </div>
+              ))}
         </div>
+        <ListViewComponent header="My Top Players:" players={topPlayers} keyToShow={'avg'} />
       </div>
       <div className="middle-column main-div">
         <div className="team-data">
@@ -116,7 +113,7 @@ const MyTeam = () => {
             <div className="team-data__text">
               <p className="team-data__name">{team.name}</p>
               <div className="team-data__dry-info">
-                <p className="team-data__user">Dor Sarel</p>
+                <p className="team-data__user">{team.owner}</p>
                 <p className="team-data__season">{leagueInfo.name} 20/21</p>
               </div>
             </div>
@@ -126,17 +123,30 @@ const MyTeam = () => {
         <PlayersTable headers={headers} players={team.players} />
       </div>
       <div className="right-column matchups">
-        {isAdmin && <button onClick={() => simulateSeason()}>Simulate</button>}
+        {isAdmin && (
+          <button className="matchups__simulate" onClick={() => simulateSeason()}>
+            Simulate Games
+          </button>
+        )}
         {teamMatchups.length > 0 &&
           teamMatchups.map((matchup) => {
+            const winClassName =
+              (matchup.homeTeamMatchupData.isWinner && matchup.homeTeamMatchupData.teamId === teamId) ||
+              (matchup.guestTeamMatchupData.isWinner && matchup.guestTeamMatchupData.teamId === teamId);
             return (
-              <div key={matchup.id} className="matchup">
-                <p>
-                  {matchup.homeTeamMatchupData.teamName} - {matchup.homeTeamMatchupData.teamScore} - {matchup.homeTeamMatchupData.isWinner ? 'W' : 'L'}
-                </p>
-                <p>
-                  {matchup.guestTeamMatchupData.teamName} - {matchup.guestTeamMatchupData.teamScore} - {matchup.guestTeamMatchupData.isWinner ? 'W' : 'L'}
-                </p>
+              <div key={matchup.id} className={`matchup ${winClassName ? 'matchup__win' : ''}`}>
+                <div className="matchup__item">
+                  <div className="matchup__team-score">
+                    <span>{matchup.homeTeamMatchupData.teamName}</span> - <span>{matchup.homeTeamMatchupData.teamScore}</span>
+                  </div>
+                  <span className={`matchup__game-status`}>{matchup.homeTeamMatchupData.isWinner ? 'W' : 'L'}</span>
+                </div>
+                <div className="matchup__item">
+                  <div className="matchup__team-score">
+                    <span>{matchup.guestTeamMatchupData.teamName}</span> - <span>{matchup.guestTeamMatchupData.teamScore}</span>
+                  </div>
+                  <span className={`matchup__game-status`}>{matchup.guestTeamMatchupData.isWinner ? 'W' : 'L'}</span>
+                </div>
               </div>
             );
           })}

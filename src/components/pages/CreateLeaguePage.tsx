@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import CreateLeagueStep from './CreateLeagueArea/CreateLeagueStep';
 import InviteParticipants from './CreateLeagueArea/InviteParticipants';
 import LeagueCreatorStep from './CreateLeagueArea/LeagueCreatorStep';
-import { ICreateLeagueRequest, ILeagueInfo, LeagueCreator, LeagueStatus, Participant } from '../../models/League/LeagueModels';
+import { ICreateLeagueRequest, LeagueCreator, Participant } from '../../models/League/LeagueModels';
 import { useCreateLeague } from '../../hooks/useCreateLeague';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';

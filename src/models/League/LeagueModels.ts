@@ -39,6 +39,7 @@ export interface ITeam {
   positionInLeague: number;
   nbaPlayers: IPlayer[];
   matchups: IMatchup[];
+  numberOfWins: number;
 }
 
 export interface IMatchup {

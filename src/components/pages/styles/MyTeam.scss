@@ -72,25 +72,89 @@
   .mediaBox {
     width: 28rem;
   }
+}
 
-  .bottom-boxes {
-    position: relative;
-    left: 4.5rem;
+.board {
+  width: 80%;
+  padding: 1.25rem 0;
+
+  h2 {
+    margin-left: 0;
+    text-align: center;
+    font-size: 2.5rem;
+  }
+
+  &__item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    &:nth-child(2n) {
+      background-color: #ddebf7;
+    }
+  }
+
+  &__position {
+    font-weight: bold;
+    margin-inline-end: 2rem;
+  }
+
+  &__name {
+    margin-inline-end: auto;
+    font-size: 1.5rem;
   }
 }
 
 .matchups {
   margin-top: 4rem;
 
+  &__simulate {
+    border: none;
+    padding: 1rem 2.15rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    cursor: pointer;
+    background-color: #ed254e;
+    color: white;
+  }
+
   .matchup {
     border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 1.2rem;
-    width: 50%;
+    width: 80%;
     margin-bottom: 0.5rem;
     background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
-    p {
-      font-weight: normal;
+    &__win {
+      background-color: #c2f2ba;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__team-score {
+      font-size: 1.75rem;
+    }
+
+    &__game-status {
+      font-size: 1.15rem;
     }
   }
 }
