@@ -38,6 +38,22 @@ export interface ITeam {
   picture: number[];
   positionInLeague: number;
   nbaPlayers: IPlayer[];
+  matchups: IMatchup[];
+}
+
+export interface IMatchup {
+  id: string;
+  created: Date;
+  homeTeamMatchupData: IMatchData;
+  guestTeamMatchupData: IMatchData;
+}
+
+export interface IMatchData {
+  teamId: string;
+  teamName: string;
+  teamScore: number;
+  isWinner: boolean;
+  roster: number[];
 }
 
 export enum LeagueStatus {

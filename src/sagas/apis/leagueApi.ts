@@ -16,3 +16,7 @@ export const joinLeagueAsync = async (request: JoinLeagueRequest) => {
 export const completeDraftEvent = async (request: ICompleteDraftRequest) => {
   return await HttpClient.post(`/leagues/${request.leagueId}/completeDraft`, request.nbaPlayersId, null);
 };
+
+export const simulateSeasonAsync = async (leagueId: string) => {
+  return await HttpClient.post(`/leagues/${leagueId}/simulate`, null);
+};

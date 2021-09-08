@@ -37,9 +37,6 @@ const Header = () => {
                 <GuardLink to={GlobalPaths.myTeamUrl}>My Team</GuardLink>
               </li>
               <li className="header-nav-item">
-                <GuardLink to="/">Matchup</GuardLink>
-              </li>
-              <li className="header-nav-item">
                 <GuardLink to={GlobalPaths.playersUrl}>Players</GuardLink>
               </li>
               <li className="header-nav-item">

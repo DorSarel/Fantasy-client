@@ -3,46 +3,51 @@
   overflow: hidden;
   font-size: 1.5rem;
 
-  .hoopers {
-    left: 38rem;
-    width: 13rem;
-    height: 12rem;
-    position: absolute;
-  }
+  .team-data {
+    display: flex;
+    align-items: center;
 
-  .table {
-    position: relative;
-    left: 5rem;
-  }
-
-  .main-div-text {
-    position: relative;
-    top: 1rem;
-
-    p:nth-child(3) {
-      margin-top: 2rem;
+    img {
+      width: 15rem;
+      height: 15rem;
     }
 
-    .left-text {
-      float: right;
-      position: relative;
-      bottom: 20rem;
+    &__info {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
 
-      img {
-        position: relative;
-        top: 9.5rem;
-        width: 6rem;
-        height: 6rem;
-        z-index: -2;
-      }
+    &__text {
+      margin-block-end: auto;
+    }
 
-      p {
-        color: white;
-        margin: 4rem;
-        position: relative;
-        left: -0.1rem;
-        font-size: large;
-      }
+    &__name {
+      font-size: 5rem;
+      font-weight: bold;
+    }
+
+    &__dry-info {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    &__user {
+      font-size: 1.5rem;
+    }
+
+    &__season {
+      font-size: 1.05rem;
+    }
+
+    &__position {
+      border: 1px solid #ddd;
+      padding: 2rem 3.75rem;
+      border-radius: 50%;
+      background-color: #ddebf7;
     }
   }
 }
@@ -70,6 +75,22 @@
 
   .bottom-boxes {
     position: relative;
-  left: 4.5rem;
+    left: 4.5rem;
+  }
+}
+
+.matchups {
+  margin-top: 4rem;
+
+  .matchup {
+    border: 1px solid #ccc;
+    padding: 1.2rem;
+    width: 50%;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+
+    p {
+      font-weight: normal;
+    }
   }
 }

@@ -9,7 +9,7 @@ export interface IPlayerResponse extends IPlayerWithStats {
   teamId?: number;
   playerId: number;
   height?: number;
-  ImagePath: string;
+  imagePath: string;
   jerseyNumber: number;
 }
 

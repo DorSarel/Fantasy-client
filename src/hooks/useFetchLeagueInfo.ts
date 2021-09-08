@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query';
-import { ILeagueInfo } from '../models/League/LeagueModels';
 import { getLeagueInfo } from '../sagas/apis/leagueApi';
 
 export const useFetchLeagueInfo = (leagueId: string) => {
