@@ -10,7 +10,7 @@ export const useFetchLeagueInfo = (leagueId: string) => {
     },
     {
       enabled: !!leagueId,
-      refetchOnWindowFocus: true,
+      refetchOnWindowFocus: false,
       retry: 1,
     }
   );
